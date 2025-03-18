@@ -1,0 +1,74 @@
+//
+// layouts.scss
+//
+
+html[data-bs-theme="dark"] {
+    .logo-box {
+        .logo-light {
+            display: block;
+        }
+
+        .logo-dark {
+            display: none;
+        }
+    }
+}
+
+// Sidenav Logo
+html[data-menu-color="brand"],
+html[data-menu-color="dark"] {
+
+    .navbar-custom {
+        .logo-box {
+            .logo-light {
+                display: block;
+            }
+
+            .logo-dark {
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+html[data-layout-width="boxed"] {
+    #wrapper {
+        max-width: var(--#{$prefix}boxed-layout-width);
+        margin: 0 auto;
+        box-shadow: $box-shadow-lg;
+    }
+
+    .navbar-custom {
+        max-width: var(--#{$prefix}boxed-layout-width);
+        margin: 0 auto;
+    }
+}
+
+// Scrollable Layout
+@include media-breakpoint-up(xl) {
+    html[data-layout-position="scrollable"] {
+
+        .navbar-custom,
+        .topnav {
+            position: static;
+            right: 0;
+            left: 0;
+        }
+
+        .left-side-menu {
+            position: absolute;
+            height: unset;
+        }
+
+        .sidebar-main-menu {
+            position: absolute !important;
+            top: 0 !important;
+        }
+
+        .content-page {
+            padding-top: 0;
+        }
+    }
+}
