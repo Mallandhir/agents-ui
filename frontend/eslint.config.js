@@ -12,10 +12,7 @@ export default tseslint.config(
     languageOptions: {
       ecmaVersion: "latest",
       globals: globals.browser,
-      sourceType: "module",
-      ecmaFeatures: {
-        jsx: true
-      }
+      sourceType: "module"
     },
     plugins: {
       "react-hooks": reactHooks,

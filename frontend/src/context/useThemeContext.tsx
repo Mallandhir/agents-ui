@@ -12,7 +12,6 @@ import {
   LayoutTypes,
   OffcanvasControlType
 } from "@/types";
-import useQueryParams from "@/hooks/useQueryParams";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { toggleDocumentAttribute } from "@/utils";
 
@@ -27,20 +26,10 @@ function useThemeContext() {
 }
 
 function ThemeProvider({ children }: { children: ReactNode }) {
-  const params = useQueryParams();
-
-  const override = !!(
-    params.layout_theme ||
-    params.sidenav_size ||
-    params.layout_type ||
-    params.sidenav_theme ||
-    params.layout_mode
-  );
-
   const INIT_STATE: LayoutState = {
     theme: "light",
     dir: "ltr",
-    layoutType: params["layout_type"] ? (params["layout_type"] as LayoutTypes) : "vertical",
+    layoutType: "vertical",
     mode: "fluid",
     sidenav: {
       mode: "default",
@@ -56,7 +45,7 @@ function ThemeProvider({ children }: { children: ReactNode }) {
     showBackdrop: false
   });
 
-  const [settings, setSettings] = useLocalStorage<LayoutState>("__SHREYU_REACT_CONFIG__", INIT_STATE, override);
+  const [settings, setSettings] = useLocalStorage<LayoutState>("__SHREYU_REACT_CONFIG__", INIT_STATE);
   // const [settings, setSettings] = useState<LayoutState>(INIT_STATE)
 
   // update settings
@@ -78,10 +67,14 @@ function ThemeProvider({ children }: { children: ReactNode }) {
     updateSettings({ sidenav: { ...settings.sidenav, mode: newSidenavMode } });
 
   const updateSidenavPosition = (newSidenavPosition: LayoutSidenav["position"]) =>
-    updateSettings({ sidenav: { ...settings.sidenav, position: newSidenavPosition } });
+    updateSettings({
+      sidenav: { ...settings.sidenav, position: newSidenavPosition }
+    });
 
   const updateSidenavTheme = (newSidenavTheme: LayoutSidenav["theme"]) =>
-    updateSettings({ sidenav: { ...settings.sidenav, theme: newSidenavTheme } });
+    updateSettings({
+      sidenav: { ...settings.sidenav, theme: newSidenavTheme }
+    });
 
   const updateTopbar = (newTopbar: LayoutTopbarTheme) => updateSettings({ ...settings, topbarTheme: newTopbar });
 
@@ -94,7 +87,10 @@ function ThemeProvider({ children }: { children: ReactNode }) {
 
   // toggle theme customizer offcanvas
   const toggleThemeCustomizer: OffcanvasControlType["toggle"] = () => {
-    setOffcanvasStates({ ...offcanvasStates, showThemeCustomizer: !offcanvasStates.showThemeCustomizer });
+    setOffcanvasStates({
+      ...offcanvasStates,
+      showThemeCustomizer: !offcanvasStates.showThemeCustomizer
+    });
   };
 
   const themeCustomizer: LayoutType["themeCustomizer"] = {
@@ -103,25 +99,13 @@ function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   useEffect(() => {
-    toggleDocumentAttribute(
-      "data-bs-theme",
-      params["layout_theme"] ? (params["layout_theme"] as LayoutTheme) : settings.theme
-    );
+    toggleDocumentAttribute("data-bs-theme", settings.theme);
     toggleDocumentAttribute("data-layout-mode", settings.layoutType);
-    toggleDocumentAttribute(
-      "data-layout-width",
-      params["layout_mode"] ? (params["layout_mode"] as LayoutMode) : settings.mode
-    );
+    toggleDocumentAttribute("data-layout-width", settings.mode);
     toggleDocumentAttribute("data-layout-position", settings.sidenav.position);
-    toggleDocumentAttribute(
-      "data-menu-color",
-      params["sidenav_theme"] ? (params["sidenav_theme"] as LayoutSidenav["theme"]) : settings.sidenav.theme
-    );
+    toggleDocumentAttribute("data-menu-color", settings.sidenav.theme);
     toggleDocumentAttribute("data-topbar-color", settings.topbarTheme);
-    toggleDocumentAttribute(
-      "data-sidebar-size",
-      params["sidenav_size"] ? (params["sidenav_size"] as LayoutSidenav["mode"]) : settings.sidenav.mode
-    );
+    toggleDocumentAttribute("data-sidebar-size", settings.sidenav.mode);
 
     return () => {
       toggleDocumentAttribute("data-bs-theme", settings.theme, true);
