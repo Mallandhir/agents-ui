@@ -10,8 +10,23 @@
     "preview": "vite preview",
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
   },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/react": "^18.3.11",
+    "@types/react-select": "^5.0.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "typescript": "^4.9.5",
+    "typescript-eslint": "^8.27.0",
+    "vite": "^6.2.2"
+  },
   "dependencies": {
-    "axios": "^1.8.3",
+    "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "classnames": "^2.5.1",
     "mobx": "^6.13.7",
@@ -20,28 +35,13 @@
     "react-bootstrap": "^2.10.9",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^5.0.0",
-    "react-router-dom": "^7.2.0",
-    "react-scripts": "5.0.1",
-    "react-select": "^5.0.0",
+    "react-router-dom": "^7.4.0",
+    "react-scripts": "^5.0.1",
+    "react-select": "^5.10.1",
     "react-toastify": "^11.0.5",
-    "sass": "^1.43.4",
-    "simplebar-react": "^2.3.6",
+    "sass": "^1.86.0",
+    "simplebar-react": "^3.3.0",
     "tldts": "^6.1.84",
     "uuid": "^11.1.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.13.0",
-    "@types/react": "^18.3.11",
-    "@types/react-select": "^4.0.17",
-    "@vitejs/plugin-react": "^4.3.3",
-    "eslint": "^9.13.0",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.13",
-    "globals": "^15.11.0",
-    "prettier": "^2.3.2",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "typescript": "~5.6.2",
-    "typescript-eslint": "^8.10.0",
-    "vite": "^5.4.9"
   }
 }
