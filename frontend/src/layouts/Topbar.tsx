@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 // components
 import AppsDropdown from "../components/AppsDropdown/";
 import MaximizeScreen from "../components/MaximizeScreen";
-import NotificationDropdown from "../components/NotificationDropdown";
 import ProfileDropdown from "../components/ProfileDropdown";
-import SearchDropdown from "../components/SearchDropdown";
 
 // images
 import { useThemeContext } from "@/context";
@@ -185,17 +183,11 @@ const Topbar = ({ hideLogo, navCssClasses, openLeftMenuCallBack }: TopbarProps) 
               </a>
             </li>
 
-            <li className="dropdown d-inline-block d-lg-none">
-              <SearchDropdown />
-            </li>
             <li className="dropdown d-none d-lg-inline-block">
               <MaximizeScreen />
             </li>
             <li className="dropdown d-none d-lg-inline-block topbar-dropdown">
               <AppsDropdown />
-            </li>
-            <li className="dropdown notification-list topbar-dropdown">
-              <NotificationDropdown notifications={Notifications} />
             </li>
             <li className="dropdown notification-list topbar-dropdown">
               <ProfileDropdown profilePic={""} menuItems={ProfileMenus} username={"User Name"} />

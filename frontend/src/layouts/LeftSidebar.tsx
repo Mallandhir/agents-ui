@@ -131,8 +131,4 @@ const LeftSidebar = () => {
   );
 };
 
-LeftSidebar.defaultProps = {
-  isCondensed: false
-};
-
 export default LeftSidebar;
