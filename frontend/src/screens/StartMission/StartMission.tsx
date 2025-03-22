@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { Sidebar } from "../../components/sidebar/Sidebar/Sidebar";
+import { useState } from "react";
 import { MainContent } from "../../components/sidebar/MainContent/MainContent";
-import SelectedMission from "./SelectedMission";
-import { Home } from "../home";
-import { AgentCircle } from "../agent-circle";
+import { Sidebar } from "../../components/sidebar/Sidebar/Sidebar";
 import { AgentChat } from "../agent-chat";
+import { AgentCircle } from "../agent-circle";
 import DeployCard from "../deploy-card/DeployCard";
+import { Home } from "../home";
 import { PlanChat } from "../plan-chat";
 
 export const StartMission = (): JSX.Element => {

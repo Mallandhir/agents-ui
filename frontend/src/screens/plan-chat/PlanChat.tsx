@@ -1,11 +1,12 @@
 import React from "react";
-import { messages, aiResponses } from "./data";
-import { AIMessage, UserMessage, ResearchCard, FinalResponse } from "./components";
+import ChatTextarea from "../home/components/ChatTextarea";
+import { AIMessage, FinalResponse, ResearchCard, UserMessage } from "./components";
+import { aiResponses, messages } from "./data";
 
 export const PlanChat = (): JSX.Element => {
   return (
-    <div className="min-h-screen bg-appbg">
-      <div className="flex flex-col w-full max-w-lg mx-auto items-end gap-4 p-4">
+    <div className="min-h-screen flex flex-col justify-between">
+      <div className="flex flex-col w-full max-w-lg mx-auto items-end gap-4 p-4 overflow-y-auto">
         {messages.map((message, index) =>
           message.type === "user" ? (
             <UserMessage key={`message-${index}`} message={message} />
@@ -25,6 +26,9 @@ export const PlanChat = (): JSX.Element => {
             </React.Fragment>
           ))}
         </div>
+      </div>
+      <div className="flex flex-col w-full max-w-lg mx-auto items-end gap-4 p-4">
+        <ChatTextarea value={""} onChange={() => {}} />
       </div>
     </div>
   );

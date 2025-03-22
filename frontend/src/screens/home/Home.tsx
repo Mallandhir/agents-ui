@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "../../components/home/ui/button";
 import { Card, CardContent } from "../../components/home/ui/card";
-import { categories, taskSuggestions } from "./data";
 import ChatTextarea from "./components/ChatTextarea";
+import { categories, taskSuggestions } from "./data";
 
 export const Home = (): JSX.Element => {
   const [prompt, setPrompt] = useState("Setup outbound motion for my company");
