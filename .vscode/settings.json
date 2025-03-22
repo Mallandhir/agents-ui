@@ -3,5 +3,9 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
   "prettier.useEditorConfig": false,
-  "prettier.configPath": ".prettierrc.json"
+  "prettier.configPath": ".prettierrc.json",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "editor.guides.bracketPairs": true
 }
