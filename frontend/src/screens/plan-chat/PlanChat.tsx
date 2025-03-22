@@ -1,11 +1,6 @@
 import React from "react";
 import { messages, aiResponses } from "./data";
-import {
-  AIMessage,
-  UserMessage,
-  ResearchCard,
-  FinalResponse,
-} from "./components";
+import { AIMessage, UserMessage, ResearchCard, FinalResponse } from "./components";
 
 export const PlanChat = (): JSX.Element => {
   return (

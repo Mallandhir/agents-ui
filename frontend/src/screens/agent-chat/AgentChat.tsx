@@ -9,7 +9,7 @@ import {
   RECOMMENDED_INDUSTRIES,
   SECTIONS,
   SUMMARY_TEXT,
-  THINKING_STEPS,
+  THINKING_STEPS
 } from "./constants";
 
 export const AgentChat = (): JSX.Element => {
@@ -36,22 +36,18 @@ export const AgentChat = (): JSX.Element => {
             dateRange="1 Mar - Today"
             badges={[BADGES.ENTIRE_PERIOD, BADGES.DATE_RANGE]}
             summaryData={{
-              text: SUMMARY_TEXT,
+              text: SUMMARY_TEXT
             }}
             outputData={{
               label: "Recommended Industries",
-              industries: RECOMMENDED_INDUSTRIES,
+              industries: RECOMMENDED_INDUSTRIES
             }}
             thinkingProcess={{
-              steps: THINKING_STEPS,
+              steps: THINKING_STEPS
             }}
           />
         </div>
-        <ChatInput
-          placeholder="Chat with Nova"
-          onSend={handleSendMessage}
-          onVoice={handleVoiceInput}
-        />
+        <ChatInput placeholder="Chat with Nova" onSend={handleSendMessage} onVoice={handleVoiceInput} />
       </div>
     </div>
   );

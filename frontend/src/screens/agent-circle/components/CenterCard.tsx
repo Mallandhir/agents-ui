@@ -5,10 +5,7 @@ import { Card, CardContent } from "../../../components/sidebar/ui/card";
 import { EntityCardProps } from "../types";
 import { Plus } from "lucide-react";
 
-export const CenterCard: React.FC<EntityCardProps> = ({
-  entity,
-  onEntityClick,
-}) => {
+export const CenterCard: React.FC<EntityCardProps> = ({ entity, onEntityClick }) => {
   return (
     <Card
       className="flex flex-col w-[246px] h-[232px] items-center justify-center gap-[26.59px] cursor-pointer border-none shadow-none"
@@ -37,7 +34,7 @@ export const CenterCard: React.FC<EntityCardProps> = ({
                 <div
                   className="relative w-fit mt-[-1.11px] mr-[-0.92px] text-[#a5a5a5] text-[11.1px] tracking-[0] leading-[13.3px] whitespace-nowrap"
                   style={{
-                    fontFamily: "'PP_Neue_Montreal_Mono-Medium', Helvetica",
+                    fontFamily: "'PP_Neue_Montreal_Mono-Medium', Helvetica"
                   }}
                 >
                   {entity.role}
@@ -49,7 +46,7 @@ export const CenterCard: React.FC<EntityCardProps> = ({
                 <div
                   className="mt-[-1.11px] relative w-fit text-[#2a2a2a] text-[10px] tracking-[0] leading-[12.0px] whitespace-nowrap"
                   style={{
-                    fontFamily: "'PP_Neue_Montreal_Mono-Medium', Helvetica",
+                    fontFamily: "'PP_Neue_Montreal_Mono-Medium', Helvetica"
                   }}
                 >
                   {entity.status}
@@ -70,9 +67,7 @@ export const CenterCard: React.FC<EntityCardProps> = ({
               <span className="text-[#c072ca] underline">
                 {entity.results?.count} {entity.results?.type}
               </span>
-              <span className="text-[#353535]">
-                {entity.results?.description}
-              </span>
+              <span className="text-[#353535]">{entity.results?.description}</span>
             </div>
 
             {/* Details button */}
@@ -98,24 +93,20 @@ export const CenterCard: React.FC<EntityCardProps> = ({
               <div
                 className="relative w-fit mt-[-1.11px] text-[11.1px] tracking-[0] leading-[13.3px] whitespace-nowrap"
                 style={{
-                  fontFamily: "'PP_Neue_Montreal_Mono-Medium', Helvetica",
+                  fontFamily: "'PP_Neue_Montreal_Mono-Medium', Helvetica"
                 }}
               >
                 <span className="text-[#a5a5a5]">Last Run: </span>
-                <span className="text-[#646464]">
-                  {entity.timestamp.lastRun}
-                </span>
+                <span className="text-[#646464]">{entity.timestamp.lastRun}</span>
               </div>
               <div
                 className="relative w-fit text-[11.1px] tracking-[0] leading-[13.3px] whitespace-nowrap"
                 style={{
-                  fontFamily: "'PP_Neue_Montreal_Mono-Medium', Helvetica",
+                  fontFamily: "'PP_Neue_Montreal_Mono-Medium', Helvetica"
                 }}
               >
                 <span className="text-[#a5a5a5]">Time Taken: </span>
-                <span className="text-[#646464]">
-                  {entity.timestamp.timeTaken}
-                </span>
+                <span className="text-[#646464]">{entity.timestamp.timeTaken}</span>
               </div>
             </div>
           )}

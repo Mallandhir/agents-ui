@@ -10,7 +10,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({ isExpanded, onClick 
     <button
       onClick={onClick}
       className={`absolute top-5 z-50 bg-white rounded-full p-2 border border-gray-200 hover:bg-gray-50 transition-colors duration-200 w-8 h-8 flex items-center justify-center ${
-        isExpanded ? '-right-4' : '-right-10'
+        isExpanded ? "-right-4" : "-right-10"
       }`}
     >
       {isExpanded ? (

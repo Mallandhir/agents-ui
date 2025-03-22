@@ -6,41 +6,40 @@ export const DATE_RANGE = "1 Mar - Today";
 export const SUMMARY_TEXT = {
   prefix: "Found ",
   highlight: "10 high-potential markets",
-  suffix: " with significant growth opportunities",
+  suffix: " with significant growth opportunities"
 } as const;
 
 export const SECTIONS = {
   SUMMARY: "SUMMARY",
   OUTPUT_DATA: "OUTPUT DATA",
-  THINKING_PROCESS: "THINKING PROCESS",
+  THINKING_PROCESS: "THINKING PROCESS"
 } as const;
 
 export const BADGES = {
   ENTIRE_PERIOD: {
     text: "Entire Period",
     className:
-      "px-1 py-0.5 mr-1 rounded shadow-[inset_0px_4px_8.9px_#ffffff40] bg-[rgba(218,203,225,0.13)] text-[#c072ca] text-xs",
+      "px-1 py-0.5 mr-1 rounded shadow-[inset_0px_4px_8.9px_#ffffff40] bg-[rgba(218,203,225,0.13)] text-[#c072ca] text-xs"
   },
   DATE_RANGE: {
     text: DATE_RANGE,
-    className:
-      "px-2 py-1 rounded shadow-[inset_0px_4px_8.9px_#ffffff40] text-[#292929] text-xs",
+    className: "px-2 py-1 rounded shadow-[inset_0px_4px_8.9px_#ffffff40] text-[#292929] text-xs"
   },
   PREVIEW: {
     text: "PREVIEW",
     className:
-      "px-2 py-1 rounded-lg border border-solid border-[#00000008] shadow-[inset_0px_4px_8.9px_#ffffff40] bg-[rgba(218,203,225,0.13)] text-[#c072ca] text-xs",
-  },
+      "px-2 py-1 rounded-lg border border-solid border-[#00000008] shadow-[inset_0px_4px_8.9px_#ffffff40] bg-[rgba(218,203,225,0.13)] text-[#c072ca] text-xs"
+  }
 } as const;
 
 export const CHAT_INPUT = {
   placeholder: "Chat with Nova",
-  className: "h-12 pl-4 pr-16 text-sm text-[#292929]",
+  className: "h-12 pl-4 pr-16 text-sm text-[#292929]"
 } as const;
 
 export const BUTTON_STYLES = {
   common:
-    "w-6 h-6 rounded-full shadow-[inset_0px_4px_8.9px_#ffffff40] bg-gradient-to-b from-[rgba(187,144,242,1)] to-[rgba(227,146,227,1)]",
+    "w-6 h-6 rounded-full shadow-[inset_0px_4px_8.9px_#ffffff40] bg-gradient-to-b from-[rgba(187,144,242,1)] to-[rgba(227,146,227,1)]"
 } as const;
 
 export const HEADER_INFO = {
@@ -48,13 +47,13 @@ export const HEADER_INFO = {
   subtitle: "/Industry Scout",
   avatarSize: {
     width: "w-6",
-    height: "h-6",
-  },
+    height: "h-6"
+  }
 } as const;
 
 export const CARD_STYLES = {
   common:
-    "w-full border border-solid border-[#62456f0d] backdrop-blur-[8.95px] backdrop-brightness-[100%] bg-[rgba(0,0,0,0.03)]",
+    "w-full border border-solid border-[#62456f0d] backdrop-blur-[8.95px] backdrop-brightness-[100%] bg-[rgba(0,0,0,0.03)]"
 } as const;
 
 export const THINKING_STEPS = [
@@ -62,12 +61,7 @@ export const THINKING_STEPS = [
   "Loading historical industry performance metrics",
   "Analyzing global market trends and patterns",
   "Identifying emerging sectors with high growth potential",
-  "Cross-referencing market caps and growth rates",
+  "Cross-referencing market caps and growth rates"
 ] as const;
 
-export const RECOMMENDED_INDUSTRIES = [
-  "Healthcare",
-  "Financial Services",
-  "Software",
-  "Real Estate",
-] as const;
+export const RECOMMENDED_INDUSTRIES = ["Healthcare", "Financial Services", "Software", "Real Estate"] as const;

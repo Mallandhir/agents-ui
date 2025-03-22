@@ -16,12 +16,11 @@ export const ResearchCard: React.FC<ResearchCardProps> = ({ response }) => {
             <div
               className="w-fit -mt-px [font-family:'PP_Neue_Montreal-Medium',Helvetica] font-medium text-xs tracking-wider leading-4 whitespace-nowrap"
               style={{
-                background:
-                  "linear-gradient(173deg, rgba(187,144,242,1) 0%, rgba(227,146,227,1) 100%)",
+                background: "linear-gradient(173deg, rgba(187,144,242,1) 0%, rgba(227,146,227,1) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                color: "transparent",
+                color: "transparent"
               }}
             >
               {response.title}

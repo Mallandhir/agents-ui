@@ -16,12 +16,12 @@ export const entitiesData: EntityData[] = [
     results: {
       count: 10,
       type: "high-potential markets",
-      description: "with significant growth opportunities",
+      description: "with significant growth opportunities"
     },
     timestamp: {
       lastRun: "3/9/2025, 8:00:00 AM",
-      timeTaken: "600 seconds",
-    },
+      timeTaken: "600 seconds"
+    }
   },
   {
     id: "human-worker",
@@ -33,12 +33,12 @@ export const entitiesData: EntityData[] = [
     results: {
       count: 8,
       type: "emerging trends",
-      description: "in sustainable technologies",
+      description: "in sustainable technologies"
     },
     timestamp: {
       lastRun: "3/8/2025, 2:30:00 PM",
-      timeTaken: "450 seconds",
-    },
+      timeTaken: "450 seconds"
+    }
   },
   {
     id: "echo",
@@ -49,12 +49,12 @@ export const entitiesData: EntityData[] = [
     results: {
       count: 15,
       type: "market opportunities",
-      description: "in digital transformation",
+      description: "in digital transformation"
     },
     timestamp: {
       lastRun: "3/8/2025, 10:15:00 AM",
-      timeTaken: "720 seconds",
-    },
+      timeTaken: "720 seconds"
+    }
   },
   {
     id: "pulse",
@@ -65,12 +65,12 @@ export const entitiesData: EntityData[] = [
     results: {
       count: 12,
       type: "growth sectors",
-      description: "in healthcare innovation",
+      description: "in healthcare innovation"
     },
     timestamp: {
       lastRun: "3/7/2025, 4:45:00 PM",
-      timeTaken: "540 seconds",
-    },
+      timeTaken: "540 seconds"
+    }
   },
   {
     id: "quantum",
@@ -81,12 +81,12 @@ export const entitiesData: EntityData[] = [
     results: {
       count: 7,
       type: "breakthrough technologies",
-      description: "in quantum computing",
+      description: "in quantum computing"
     },
     timestamp: {
       lastRun: "3/7/2025, 1:20:00 PM",
-      timeTaken: "800 seconds",
-    },
+      timeTaken: "800 seconds"
+    }
   },
   {
     id: "synth",
@@ -97,12 +97,12 @@ export const entitiesData: EntityData[] = [
     results: {
       count: 9,
       type: "market segments",
-      description: "in synthetic biology",
+      description: "in synthetic biology"
     },
     timestamp: {
       lastRun: "3/6/2025, 11:30:00 AM",
-      timeTaken: "660 seconds",
-    },
+      timeTaken: "660 seconds"
+    }
   },
   {
     id: "nexus",
@@ -113,12 +113,12 @@ export const entitiesData: EntityData[] = [
     results: {
       count: 11,
       type: "strategic partnerships",
-      description: "in cross-industry innovation",
+      description: "in cross-industry innovation"
     },
     timestamp: {
       lastRun: "3/6/2025, 9:15:00 AM",
-      timeTaken: "580 seconds",
-    },
+      timeTaken: "580 seconds"
+    }
   },
   {
     id: "nova-2",
@@ -129,13 +129,13 @@ export const entitiesData: EntityData[] = [
     results: {
       count: 6,
       type: "emerging markets",
-      description: "in renewable energy",
+      description: "in renewable energy"
     },
     timestamp: {
       lastRun: "3/5/2025, 3:45:00 PM",
-      timeTaken: "420 seconds",
-    },
-  },
+      timeTaken: "420 seconds"
+    }
+  }
 ];
 
 export const ellipseData: EllipseData[] = [
@@ -144,55 +144,55 @@ export const ellipseData: EllipseData[] = [
     width: "218px",
     height: "257px",
     top: "123px",
-    left: "520px",
+    left: "520px"
   },
   {
     src: "/ellipse-140.svg",
     width: "257px",
     height: "218px",
     top: "3px",
-    left: "28px",
+    left: "28px"
   },
   {
     src: "/ellipse-141.svg",
     width: "218px",
     height: "257px",
     top: "123px",
-    left: "0px",
+    left: "0px"
   },
   {
     src: "/ellipse-139.svg",
     width: "289px",
     height: "250px",
     top: "0px",
-    left: "351px",
+    left: "351px"
   },
   {
     src: "/ellipse-142.svg",
     width: "218px",
     height: "257px",
     top: "0px",
-    left: "0px",
+    left: "0px"
   },
   {
     src: "/ellipse-143.svg",
     width: "257px",
     height: "218px",
     top: "151px",
-    left: "28px",
+    left: "28px"
   },
   {
     src: "/ellipse-144.svg",
     width: "257px",
     height: "218px",
     top: "151px",
-    left: "0px",
+    left: "0px"
   },
   {
     src: "/ellipse-145.svg",
     width: "218px",
     height: "257px",
     top: "0px",
-    left: "151px",
-  },
+    left: "151px"
+  }
 ];

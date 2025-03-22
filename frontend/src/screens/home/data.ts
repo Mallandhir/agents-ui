@@ -4,7 +4,7 @@ export const categories = [
   { id: 3, name: "PRODUCT & DEVELOPMENT", isActive: false },
   { id: 4, name: "MARKETING & CONTENT", isActive: false },
   { id: 5, name: "OPERATIONS & AUTOMATION", isActive: false },
-  { id: 6, name: "HR & RECRUITING", isActive: false },
+  { id: 6, name: "HR & RECRUITING", isActive: false }
 ];
 
 export const taskSuggestions = [
@@ -13,5 +13,5 @@ export const taskSuggestions = [
   { id: 3, text: "Create a cold email campaign", isActive: false },
   { id: 4, text: "Analyze competitor sales strategies", isActive: false },
   { id: 5, text: "Schedule follow-up calls", isActive: false },
-  { id: 6, text: "Optimize my sales funnel", isActive: false },
+  { id: 6, text: "Optimize my sales funnel", isActive: false }
 ];

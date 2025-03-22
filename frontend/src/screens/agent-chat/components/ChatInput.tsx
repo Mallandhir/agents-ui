@@ -4,11 +4,7 @@ import { Input } from "../../../components/agent-chat/ui/input";
 import { BUTTON_STYLES } from "../constants";
 import { ChatInputProps } from "../types";
 
-export const ChatInput: React.FC<ChatInputProps> = ({
-  placeholder,
-  onSend,
-  onVoice,
-}) => {
+export const ChatInput: React.FC<ChatInputProps> = ({ placeholder, onSend, onVoice }) => {
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
@@ -29,29 +25,13 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           onKeyPress={(e) => e.key === "Enter" && handleSend()}
         />
         <div className="absolute right-12 top-3">
-          <Button
-            size="icon"
-            className={BUTTON_STYLES.common}
-            onClick={handleSend}
-          >
-            <img
-              className="w-3 h-3"
-              alt="Frame"
-              src="/agent-chat/frame-398198.svg"
-            />
+          <Button size="icon" className={BUTTON_STYLES.common} onClick={handleSend}>
+            <img className="w-3 h-3" alt="Frame" src="/agent-chat/frame-398198.svg" />
           </Button>
         </div>
         <div className="absolute right-4 top-3">
-          <Button
-            size="icon"
-            className={BUTTON_STYLES.common}
-            onClick={onVoice}
-          >
-            <img
-              className="w-3 h-3"
-              alt="Group"
-              src="/agent-chat/group-398198.png"
-            />
+          <Button size="icon" className={BUTTON_STYLES.common} onClick={onVoice}>
+            <img className="w-3 h-3" alt="Group" src="/agent-chat/group-398198.png" />
           </Button>
         </div>
       </div>

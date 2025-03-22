@@ -12,7 +12,7 @@ export const ReportsSnapshot: React.FC<ReportsSnapshotProps> = ({
   badges,
   summaryData,
   outputData,
-  thinkingProcess,
+  thinkingProcess
 }) => {
   return (
     <div className="flex flex-col w-full items-start gap-3">
@@ -30,15 +30,8 @@ export const ReportsSnapshot: React.FC<ReportsSnapshotProps> = ({
 
       <div className="flex flex-col items-start gap-4 w-full">
         <SummaryCard title={SECTIONS.SUMMARY} text={summaryData.text} />
-        <OutputDataCard
-          title={SECTIONS.OUTPUT_DATA}
-          label={outputData.label}
-          industries={outputData.industries}
-        />
-        <ThinkingProcessCard
-          title={SECTIONS.THINKING_PROCESS}
-          steps={thinkingProcess.steps}
-        />
+        <OutputDataCard title={SECTIONS.OUTPUT_DATA} label={outputData.label} industries={outputData.industries} />
+        <ThinkingProcessCard title={SECTIONS.THINKING_PROCESS} steps={thinkingProcess.steps} />
       </div>
     </div>
   );

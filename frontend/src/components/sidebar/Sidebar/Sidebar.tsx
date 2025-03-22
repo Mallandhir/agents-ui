@@ -7,23 +7,18 @@ import { MissionList } from "./MissionList";
 interface SidebarProps {
   isExpanded: boolean;
   onToggle: () => void;
-  missions: Array<{ name: string; active: boolean; }>;
+  missions: Array<{ name: string; active: boolean }>;
   onMissionClick: (name: string) => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ 
-  isExpanded, 
-  onToggle, 
-  missions,
-  onMissionClick 
-}) => {
+export const Sidebar: React.FC<SidebarProps> = ({ isExpanded, onToggle, missions, onMissionClick }) => {
   return (
     <div className="relative flex">
       <ToggleButton isExpanded={isExpanded} onClick={onToggle} />
 
-      <div 
+      <div
         className={`bg-[#f9f9fb] border-r border-[#f1f1f1] transition-all duration-300 ease-in-out ${
-          isExpanded ? 'w-60' : 'w-0'
+          isExpanded ? "w-60" : "w-0"
         } overflow-hidden`}
       >
         <div className={`w-60 h-full`}>
@@ -38,10 +33,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="flex flex-col items-start gap-4 pt-16 px-9">
             <NewMissionButton />
             <Separator className="relative self-stretch w-full h-px ml-[-2px] mr-[-2px]" />
-            <MissionList 
-              missions={missions} 
-              onMissionClick={onMissionClick}
-            />
+            <MissionList missions={missions} onMissionClick={onMissionClick} />
           </div>
         </div>
       </div>

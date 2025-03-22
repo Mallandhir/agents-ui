@@ -38,7 +38,7 @@ export interface ReportsSnapshotProps {
     text: string;
     className: string;
   }[];
-  summaryData: Omit<SummaryCardProps, 'title'>;
-  outputData: Omit<OutputDataProps, 'title'>;
-  thinkingProcess: Omit<ThinkingProcessProps, 'title'>;
+  summaryData: Omit<SummaryCardProps, "title">;
+  outputData: Omit<OutputDataProps, "title">;
+  thinkingProcess: Omit<ThinkingProcessProps, "title">;
 }

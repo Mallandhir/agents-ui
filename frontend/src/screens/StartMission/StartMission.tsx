@@ -14,7 +14,7 @@ export const StartMission = (): JSX.Element => {
   const [missions, setMissions] = useState([
     { name: "Lead Generation", active: true },
     { name: "Mission Zeta", active: false },
-    { name: "Mission Gaia", active: false },
+    { name: "Mission Gaia", active: false }
   ]);
 
   const handleMissionClick = (name: string) => {
@@ -22,7 +22,7 @@ export const StartMission = (): JSX.Element => {
     setMissions(
       missions.map((mission) => ({
         ...mission,
-        active: mission.name === name,
+        active: mission.name === name
       }))
     );
   };
