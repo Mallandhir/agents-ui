@@ -1,11 +1,21 @@
-import React, { useState } from "react";
-import { EntityData } from "./types";
-import { entitiesData } from "./data";
+import { useEffect, useState } from "react";
 import { CenterCard } from "./components/CenterCard";
 import { DonutChart } from "./components/DonutChart";
+import { entitiesData } from "./data";
+import { EntityData } from "./types";
 
 export const AgentCircle = (): JSX.Element => {
   const [selectedEntity, setSelectedEntity] = useState<EntityData>(entitiesData[0]);
+  const [data, setData] = useState<EntityData[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      for (let i = 0; i < entitiesData.length; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setData((prev) => [...prev, entitiesData[i]]);
+      }
+    })();
+  }, []);
 
   const handleEntityClick = (entity: EntityData) => {
     console.log(`Clicked entity: ${entity.name} (${entity.id})`);
@@ -17,7 +27,7 @@ export const AgentCircle = (): JSX.Element => {
       <div className="relative w-[738px] h-[738px]">
         {/* Donut Chart */}
         <div className="absolute inset-0">
-          <DonutChart data={entitiesData} width={738} height={738} onEntityClick={handleEntityClick} />
+          <DonutChart data={data} width={738} height={738} onEntityClick={handleEntityClick} />
         </div>
 
         {/* Center card */}

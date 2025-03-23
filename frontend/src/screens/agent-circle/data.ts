@@ -1,10 +1,10 @@
-import { EntityData, EllipseData } from "./types";
-import novaimage from "../../assets/images/nova.svg";
 import echoimage from "../../assets/images/echo.svg";
+import nexusimage from "../../assets/images/nexus.svg";
+import novaimage from "../../assets/images/nova.svg";
 import pulseimage from "../../assets/images/pulse.svg";
 import quantumimage from "../../assets/images/quantum.svg";
 import synthimage from "../../assets/images/synth.svg";
-import nexusimage from "../../assets/images/nexus.svg";
+import { EntityData } from "./types";
 
 export const entitiesData: EntityData[] = [
   {
@@ -135,64 +135,5 @@ export const entitiesData: EntityData[] = [
       lastRun: "3/5/2025, 3:45:00 PM",
       timeTaken: "420 seconds"
     }
-  }
-];
-
-export const ellipseData: EllipseData[] = [
-  {
-    src: "/ellipse-138.svg",
-    width: "218px",
-    height: "257px",
-    top: "123px",
-    left: "520px"
-  },
-  {
-    src: "/ellipse-140.svg",
-    width: "257px",
-    height: "218px",
-    top: "3px",
-    left: "28px"
-  },
-  {
-    src: "/ellipse-141.svg",
-    width: "218px",
-    height: "257px",
-    top: "123px",
-    left: "0px"
-  },
-  {
-    src: "/ellipse-139.svg",
-    width: "289px",
-    height: "250px",
-    top: "0px",
-    left: "351px"
-  },
-  {
-    src: "/ellipse-142.svg",
-    width: "218px",
-    height: "257px",
-    top: "0px",
-    left: "0px"
-  },
-  {
-    src: "/ellipse-143.svg",
-    width: "257px",
-    height: "218px",
-    top: "151px",
-    left: "28px"
-  },
-  {
-    src: "/ellipse-144.svg",
-    width: "257px",
-    height: "218px",
-    top: "151px",
-    left: "0px"
-  },
-  {
-    src: "/ellipse-145.svg",
-    width: "218px",
-    height: "257px",
-    top: "0px",
-    left: "151px"
   }
 ];
