@@ -1,13 +1,17 @@
-import ChatTextarea from "@/pages/home/components/ChatTextarea";
-import { AIMessage, FinalResponse, ResearchCard, UserMessage } from "@/pages/plan-chat/components";
-import { aiResponses, messages } from "@/pages/plan-chat/data";
-import React from "react";
+import { AgentCircle } from "@/components/agent-circle";
+import { DeployCard } from "@/components/deploy-card";
+import ChatTextarea from "@/components/start-mission/components/ChatTextarea";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AgentCircle } from "../agent-circle";
-import { DeployCard } from "../deploy-card";
+import { AIMessage } from "./components/AIMessage";
+import { FinalResponse } from "./components/FinalResponse";
+import { ResearchCard } from "./components/ResearchCard";
+import { UserMessage } from "./components/UserMessage";
+import { aiResponses, messages } from "./data";
 
 export const PlanChat: React.FC = () => {
   const navigate = useNavigate();
+  const [showAgentCircle, setShowAgentCircle] = useState(false);
   return (
     <div className="min-h-screen max-h-screen flex flex-row justify-center gap-10 w-full py-3">
       <div className="flex flex-col justify-between">
@@ -24,7 +28,7 @@ export const PlanChat: React.FC = () => {
             {aiResponses.map((response, index) => (
               <React.Fragment key={`response-${index}`}>
                 {response.type === "research" ? (
-                  <ResearchCard response={response} />
+                  <ResearchCard response={response} onClickDetails={() => setShowAgentCircle(true)} />
                 ) : (
                   <FinalResponse response={response} />
                 )}
@@ -36,12 +40,18 @@ export const PlanChat: React.FC = () => {
           <ChatTextarea value={""} onChange={() => {}} onSend={() => {}} />
         </div>
       </div>
-      <div className="bg-white rounded-xl p-3">
-        <AgentCircle />
-        <div>
-          <DeployCard onDeploy={() => navigate("/agent-chat")} />
+      {showAgentCircle && (
+        <div className="bg-white rounded-xl p-3">
+          <AgentCircle
+            onClickDetails={() => {
+              navigate("/agent-view");
+            }}
+          />
+          <div>
+            <DeployCard onDeploy={() => navigate("/team-view")} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

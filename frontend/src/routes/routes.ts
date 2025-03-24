@@ -2,13 +2,10 @@ import { ILayout } from "@/types/layout.types";
 import { IRule } from "@/types/routeRules.types";
 import React from "react";
 
-const Home = React.lazy(() => import("@/pages/home").then((module) => ({ default: module.Home })));
-const AgentCircle = React.lazy(() =>
-  import("@/pages/agent-circle").then((module) => ({ default: module.AgentCircle }))
-);
-const DeployCard = React.lazy(() => import("@/pages/deploy-card").then((module) => ({ default: module.DeployCard })));
-const AgentChat = React.lazy(() => import("@/pages/agent-chat").then((module) => ({ default: module.AgentChat })));
-const PlanChat = React.lazy(() => import("@/pages/plan-chat").then((module) => ({ default: module.PlanChat })));
+const Home = React.lazy(() => import("@/pages/home"));
+const TeamView = React.lazy(() => import("@/pages/team-view"));
+const AgentView = React.lazy(() => import("@/pages/agent-view"));
+const Planner = React.lazy(() => import("@/pages/planner"));
 
 const routes: {
   path: string;
@@ -23,27 +20,21 @@ const routes: {
     rules: []
   },
   {
-    path: "/agent-circle",
+    path: "/team-view",
     layout: "main",
-    component: AgentCircle,
+    component: TeamView,
     rules: []
   },
   {
-    path: "/deploy-card",
+    path: "/agent-view",
     layout: "main",
-    component: DeployCard,
+    component: AgentView,
     rules: []
   },
   {
-    path: "/agent-chat",
+    path: "/planner",
     layout: "main",
-    component: AgentChat,
-    rules: []
-  },
-  {
-    path: "/plan-chat",
-    layout: "main",
-    component: PlanChat,
+    component: Planner,
     rules: []
   }
 ];

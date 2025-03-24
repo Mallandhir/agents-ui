@@ -1,6 +1,6 @@
 import novaimage from "@/assets/images/nova.svg";
+import { AgentCircle } from "@/components/agent-circle";
 import React from "react";
-import { AgentCircle } from "../agent-circle";
 import { ChatInput } from "./components/ChatInput";
 import { Header } from "./components/Header";
 import { ReportsSnapshot } from "./components/ReportsSnapshot";
@@ -45,7 +45,7 @@ export const AgentChat: React.FC = () => {
       </div>
       <div>
         <div className="bg-white rounded-xl">
-          <AgentCircle />
+          <AgentCircle onClickDetails={() => {}} />
         </div>
       </div>
     </div>

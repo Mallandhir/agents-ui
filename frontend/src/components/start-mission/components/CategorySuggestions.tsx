@@ -1,4 +1,4 @@
-import { Button } from "@/components/home/ui/button";
+import { Button } from "@/components/start-mission/ui/button";
 
 interface ICategorySuggestions {
   categories: {

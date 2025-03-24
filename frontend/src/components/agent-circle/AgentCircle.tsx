@@ -4,7 +4,11 @@ import { DonutChart } from "./components/DonutChart";
 import { entitiesData } from "./data";
 import { EntityData } from "./types";
 
-export const AgentCircle: React.FC = () => {
+interface AgentCircleProps {
+  onClickDetails: () => void;
+}
+
+export const AgentCircle: React.FC<AgentCircleProps> = ({ onClickDetails }) => {
   const [selectedEntity, setSelectedEntity] = useState<EntityData>(entitiesData[0]);
   const [data, setData] = useState<EntityData[]>(entitiesData);
 
@@ -24,7 +28,7 @@ export const AgentCircle: React.FC = () => {
         {/* Center card */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="pointer-events-auto">
-            <CenterCard entity={selectedEntity} onEntityClick={handleEntityClick} />
+            <CenterCard entity={selectedEntity} onEntityClick={handleEntityClick} onClickDetails={onClickDetails} />
           </div>
         </div>
       </div>

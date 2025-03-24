@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import TaskSuggestions from "./components/TaskSuggestions";
 import { categories } from "./data";
 
-export const Home: React.FC = () => {
+export const StartMission: React.FC = () => {
   const navigate = useNavigate();
   const [task, setTask] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(categories[0].id);
@@ -18,7 +18,7 @@ export const Home: React.FC = () => {
   const taskSuggestions = categories.find((category) => category.id === selectedCategory)?.tasks ?? [];
 
   const handleSend = (value: string) => {
-    navigate("/plan-chat");
+    navigate("/planner");
   };
 
   return (
@@ -26,7 +26,7 @@ export const Home: React.FC = () => {
       <div className="w-full max-w-[600px] flex flex-col items-center gap-12 mx-auto">
         <Header />
 
-        <section className="flex flex-col gap-7">
+        <section id="chat-input-section" className="flex flex-col gap-7">
           <ChatTextarea value={task} onChange={setTask} onSend={handleSend} />
 
           <CategorySuggestions

@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/home/ui/card";
+import { Card, CardContent } from "@/components/start-mission/ui/card";
 
 interface ITaskSuggestions {
   tasks: {

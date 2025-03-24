@@ -1,8 +1,8 @@
 import React from "react";
 import { Separator } from "../ui/separator";
-import { ToggleButton } from "./ToggleButton";
-import { NewMissionButton } from "./NewMissionButton";
 import { MissionList } from "./MissionList";
+import { NewMissionButton } from "./NewMissionButton";
+import { ToggleButton } from "./ToggleButton";
 
 interface SidebarProps {
   isExpanded: boolean;
@@ -17,7 +17,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isExpanded, onToggle, missions
       <ToggleButton isExpanded={isExpanded} onClick={onToggle} />
 
       <div
-        className={`bg-[#f9f9fb] border-r border-[#f1f1f1] transition-all duration-300 ease-in-out ${
+        //  border-r border-[#f1f1f1]
+        className={`bg-[#f9f9fb] transition-all duration-300 ease-in-out ${
           isExpanded ? "w-60" : "w-0"
         } overflow-hidden`}
       >

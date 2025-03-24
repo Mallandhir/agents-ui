@@ -5,9 +5,10 @@ import { AIResponse } from "../data";
 
 interface ResearchCardProps {
   response: AIResponse;
+  onClickDetails: () => void;
 }
 
-export const ResearchCard: React.FC<ResearchCardProps> = ({ response }) => {
+export const ResearchCard: React.FC<ResearchCardProps> = ({ response, onClickDetails }) => {
   return (
     <div className="w-full p-[2px] rounded-xl bg-gradient-to-r from-[#BB90F2] to-[#E392E3]">
       <Card className="border-none w-full h-full shadow-none rounded-[calc(0.75rem-2px)] bg-white">
@@ -32,6 +33,7 @@ export const ResearchCard: React.FC<ResearchCardProps> = ({ response }) => {
           <Button
             variant="outline"
             className="px-2 py-1 h-auto rounded-lg border border-solid border-[#00000008] shadow-[inset_0px_4px_8.9px_#ffffff40] [background:linear-gradient(0deg,rgba(218,203,225,0.13)_0%,rgba(218,203,225,0.13)_100%)]"
+            onClick={onClickDetails}
           >
             <span className="[font-family:'PP_Neue_Montreal-Medium',Helvetica] font-medium text-[#c072ca] text-xs tracking-[0] leading-4 whitespace-nowrap">
               DETAILS

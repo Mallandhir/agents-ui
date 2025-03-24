@@ -34,6 +34,7 @@ export interface EllipseData {
 export interface EntityCardProps {
   entity: EntityData;
   onEntityClick: (entity: EntityData) => void;
+  onClickDetails: () => void;
 }
 
 export interface SectionProps {

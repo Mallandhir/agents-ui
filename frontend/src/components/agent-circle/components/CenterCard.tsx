@@ -1,11 +1,11 @@
+import { Badge } from "@/components/sidebar/ui/badge";
+import { Button } from "@/components/sidebar/ui/button";
+import { Card, CardContent } from "@/components/sidebar/ui/card";
 import { Plus } from "lucide-react";
 import React from "react";
-import { Badge } from "../../../components/sidebar/ui/badge";
-import { Button } from "../../../components/sidebar/ui/button";
-import { Card, CardContent } from "../../../components/sidebar/ui/card";
 import { EntityCardProps } from "../types";
 
-export const CenterCard: React.FC<EntityCardProps> = ({ entity, onEntityClick }) => {
+export const CenterCard: React.FC<EntityCardProps> = ({ entity, onEntityClick, onClickDetails }) => {
   return (
     <Card
       className="flex flex-col w-[246px] h-[232px] items-center justify-center gap-[26.59px] cursor-pointer border-none shadow-none"
@@ -70,6 +70,7 @@ export const CenterCard: React.FC<EntityCardProps> = ({ entity, onEntityClick })
             <Button
               variant="outline"
               className="inline-flex items-center gap-[12.01px] pl-[6.65px] pr-[17.73px] py-[6.65px] rounded-[8.86px] border-[1.11px] border-solid border-[#00000008] shadow-[inset_0px_4.43px_9.86px_#ffffff40] bg-[rgba(218,203,225,0.13)]"
+              onClick={onClickDetails}
             >
               <button className="flex w-4 h-4 min-w-[20px] min-h-[20px] items-center justify-center rounded-full overflow-hidden shadow-[inset_0px_4px_8.9px_#ffffff40] [background:linear-gradient(175deg,rgba(187,144,242,1)_0%,rgba(227,146,227,1)_100%)]">
                 <Plus className="text-white" />

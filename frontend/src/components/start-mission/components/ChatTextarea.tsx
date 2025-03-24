@@ -1,9 +1,5 @@
-import { ArrowUp } from "lucide-react";
-
-import { AudioLines } from "lucide-react";
-import { CardContent } from "../../../components/home/ui/card";
-
-import { Card } from "../../../components/home/ui/card";
+import { Card, CardContent } from "@/components/start-mission/ui/card";
+import { ArrowUp, AudioLines } from "lucide-react";
 
 interface ChatTextareaProps {
   value: string;
