@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { containerVariants, itemVariants } from "./animations";
 import CategorySuggestions from "./components/CategorySuggestions";
 import ChatTextarea from "./components/ChatTextarea";
 import Header from "./components/Header";
@@ -22,22 +24,35 @@ export const StartMission: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50 p-4">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="min-h-screen w-full flex items-center justify-center bg-gray-50 p-4"
+    >
       <div className="w-full max-w-[600px] flex flex-col items-center gap-12 mx-auto">
-        <Header />
+        <motion.div variants={itemVariants}>
+          <Header />
+        </motion.div>
 
-        <section id="chat-input-section" className="flex flex-col gap-7">
-          <ChatTextarea value={task} onChange={setTask} onSend={handleSend} placeholder="Enter your task here..." />
+        <section id="chat-input-section" className="flex flex-col gap-7 w-full">
+          <motion.div variants={itemVariants}>
+            <ChatTextarea value={task} onChange={setTask} onSend={handleSend} placeholder="Enter your task here..." />
+          </motion.div>
 
-          <CategorySuggestions
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelect={setSelectedCategory}
-          />
+          <motion.div variants={itemVariants}>
+            <CategorySuggestions
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onSelect={setSelectedCategory}
+            />
+          </motion.div>
 
-          <TaskSuggestions tasks={taskSuggestions} onSelect={handleClickTask} />
+          <motion.div variants={itemVariants}>
+            <TaskSuggestions tasks={taskSuggestions} onSelect={handleClickTask} />
+          </motion.div>
         </section>
       </div>
-    </div>
+    </motion.div>
   );
 };
