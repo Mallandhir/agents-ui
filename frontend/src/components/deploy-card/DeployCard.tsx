@@ -8,7 +8,7 @@ interface DeployCardProps {
 export const DeployCard: React.FC<DeployCardProps> = ({ onDeploy }) => {
   return (
     <div className="w-full max-w-4xl mx-auto p-4">
-      <div className="rounded-xl bg-white">
+      <div className="rounded-xl bg-transparent">
         <div className="flex flex-col md:flex-row gap-6 p-8">
           {/* Traditional Team Section */}
           <div className="flex flex-col gap-3">
@@ -31,12 +31,12 @@ export const DeployCard: React.FC<DeployCardProps> = ({ onDeploy }) => {
                 <div className="space-y-1">
                   <div className="font-light text-[#292929] text-lg tracking-tight leading-normal">Oneshot AI</div>
 
-                  <div className="text-sm leading-normal">
+                  <div className="text-xs leading-normal">
                     <span className="text-[#c073ca] font-medium">24/7 </span>
                     <span className="text-[#292929] font-light">Operation</span>
                   </div>
 
-                  <div className="text-sm leading-normal">
+                  <div className="text-xs leading-normal">
                     <span className="text-[#c073ca] font-medium">$3,000</span>
                     <span className="text-[#292929] font-light"> / month</span>
                   </div>
@@ -44,11 +44,11 @@ export const DeployCard: React.FC<DeployCardProps> = ({ onDeploy }) => {
 
                 <div className="space-y-2">
                   <div className="font-medium text-[#c072ca] text-xs leading-normal">
-                    // Unleash Elite AI &amp; Human Agents
+                    Unleash Elite AI &amp; Human Agents
                   </div>
 
                   <Button
-                    className="w-full md:w-64 h-8 rounded-lg border-none shadow-[inset_0px_4px_8.9px_#ffffff40] [background:linear-gradient(173deg,rgba(187,144,242,1)_0%,rgba(227,146,227,1)_100%)] text-white font-medium text-sm"
+                    className="w-full h-8 rounded-lg border-none shadow-[inset_0px_4px_8.9px_#ffffff40] [background:linear-gradient(173deg,rgba(187,144,242,1)_0%,rgba(227,146,227,1)_100%)] text-white font-medium text-sm"
                     onClick={onDeploy}
                   >
                     DEPLOY NOW

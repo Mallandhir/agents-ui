@@ -12,6 +12,7 @@ const TeamView: React.FC = () => {
             onClickDetails={() => {
               navigate("/agent-view");
             }}
+            size={625}
           />
         </div>
       </div>

@@ -5,9 +5,10 @@ interface ChatTextareaProps {
   value: string;
   onChange: (value: string) => void;
   onSend: (value: string) => void;
+  placeholder: string;
 }
 
-const ChatTextarea: React.FC<ChatTextareaProps> = ({ value, onChange, onSend }) => {
+const ChatTextarea: React.FC<ChatTextareaProps> = ({ value, onChange, onSend, placeholder }) => {
   const handleSend = () => {
     onSend(value);
   };
@@ -22,7 +23,7 @@ const ChatTextarea: React.FC<ChatTextareaProps> = ({ value, onChange, onSend }) 
               onChange={(e) => onChange(e.target.value)}
               className="font-ppNeue-book text-[#292929] text-sm leading-[19.6px] bg-transparent resize-none outline-none w-full min-h-[48px]"
               rows={2}
-              placeholder="Enter your task here..."
+              placeholder={placeholder}
             />
             <div className="flex items-center justify-end">
               <div className="flex gap-2">

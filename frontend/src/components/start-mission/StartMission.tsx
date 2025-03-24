@@ -27,7 +27,7 @@ export const StartMission: React.FC = () => {
         <Header />
 
         <section id="chat-input-section" className="flex flex-col gap-7">
-          <ChatTextarea value={task} onChange={setTask} onSend={handleSend} />
+          <ChatTextarea value={task} onChange={setTask} onSend={handleSend} placeholder="Enter your task here..." />
 
           <CategorySuggestions
             categories={categories}

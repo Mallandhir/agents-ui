@@ -13,7 +13,7 @@ export const PlanChat: React.FC = () => {
   const navigate = useNavigate();
   const [showAgentCircle, setShowAgentCircle] = useState(false);
   return (
-    <div className="min-h-screen max-h-screen flex flex-row justify-center gap-10 w-full py-3">
+    <div className="min-h-screen max-h-screen flex flex-row justify-center gap-10 w-full py-3 pe-2">
       <div className="flex flex-col justify-between">
         <div className="flex flex-col w-full max-w-lg mx-auto items-end gap-4 p-4 overflow-y-auto">
           {messages.map((message, index) =>
@@ -37,7 +37,7 @@ export const PlanChat: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col w-full max-w-lg mx-auto items-end gap-4">
-          <ChatTextarea value={""} onChange={() => {}} onSend={() => {}} />
+          <ChatTextarea placeholder="Type your instructions here..." value={""} onChange={() => {}} onSend={() => {}} />
         </div>
       </div>
       {showAgentCircle && (
@@ -46,7 +46,7 @@ export const PlanChat: React.FC = () => {
             onClickDetails={() => {
               navigate("/agent-view");
             }}
-            size={625}
+            size={575}
           />
           <div>
             <DeployCard onDeploy={() => navigate("/team-view")} />
