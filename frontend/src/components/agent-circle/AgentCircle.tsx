@@ -5,17 +5,19 @@ import { entitiesData } from "./data";
 import { EntityData } from "./types";
 
 interface AgentCircleProps {
-  onClickDetails: () => void;
+  onClickEntity: (entity: EntityData) => void;
+  onClickDetails: (entity: EntityData) => void;
   size?: number;
 }
 
-export const AgentCircle: React.FC<AgentCircleProps> = ({ onClickDetails, size = 500 }) => {
+export const AgentCircle: React.FC<AgentCircleProps> = ({ onClickEntity, onClickDetails, size = 500 }) => {
   const [selectedEntity, setSelectedEntity] = useState<EntityData>(entitiesData[0]);
   const [data, setData] = useState<EntityData[]>(entitiesData);
 
   const handleEntityClick = (entity: EntityData) => {
     console.log(`Clicked entity: ${entity.name} (${entity.id})`);
     setSelectedEntity(entity);
+    onClickEntity(entity);
   };
 
   return (

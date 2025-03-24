@@ -31,12 +31,6 @@ export interface EllipseData {
   left: string;
 }
 
-export interface EntityCardProps {
-  entity: EntityData;
-  onEntityClick: (entity: EntityData) => void;
-  onClickDetails: () => void;
-}
-
 export interface SectionProps {
   className: string;
   style?: React.CSSProperties;

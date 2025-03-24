@@ -3,7 +3,13 @@ import { Button } from "@/components/sidebar/ui/button";
 import { Card, CardContent } from "@/components/sidebar/ui/card";
 import { Plus } from "lucide-react";
 import React from "react";
-import { EntityCardProps } from "../types";
+import { EntityData } from "../types";
+
+interface EntityCardProps {
+  entity: EntityData;
+  onEntityClick: (entity: EntityData) => void;
+  onClickDetails: (entity: EntityData) => void;
+}
 
 export const CenterCard: React.FC<EntityCardProps> = ({ entity, onEntityClick, onClickDetails }) => {
   return (
@@ -54,7 +60,7 @@ export const CenterCard: React.FC<EntityCardProps> = ({ entity, onEntityClick, o
             <Button
               variant="outline"
               className="inline-flex items-center gap-[12.01px] pl-[6.65px] pr-[17.73px] py-[6.65px] rounded-[8.86px] border-[1.11px] border-solid border-[#00000008] shadow-[inset_0px_4.43px_9.86px_#ffffff40] bg-[rgba(218,203,225,0.13)]"
-              onClick={onClickDetails}
+              onClick={() => onClickDetails(entity)}
             >
               <button className="flex w-4 h-4 min-w-[20px] min-h-[20px] items-center justify-center rounded-full overflow-hidden shadow-[inset_0px_4px_8.9px_#ffffff40] [background:linear-gradient(175deg,rgba(187,144,242,1)_0%,rgba(227,146,227,1)_100%)]">
                 <Plus className="text-white" />

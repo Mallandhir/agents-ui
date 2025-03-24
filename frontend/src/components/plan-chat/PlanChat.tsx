@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatTextarea from "../start-mission/components/ChatTextarea";
-import { chatSectionVariants, sidebarVariants } from "./animations";
+import { chatSectionVariants, containerVariants, sidebarVariants } from "./animations";
 import ChatSection from "./components/ChatSection";
 
 export const PlanChat: React.FC = () => {
@@ -16,7 +16,13 @@ export const PlanChat: React.FC = () => {
   };
 
   return (
-    <motion.div className="min-h-screen max-h-screen flex flex-row justify-center gap-10 w-full py-3 pe-2">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      className="min-h-screen max-h-screen flex flex-row justify-center gap-10 w-full py-3 pe-2"
+    >
       <AnimatePresence>
         <motion.div
           layout
@@ -54,12 +60,15 @@ export const PlanChat: React.FC = () => {
                 onClickDetails={() => {
                   navigate("/agent-view");
                 }}
+                onClickEntity={() => {
+                  // navigate("/agent-view");
+                }}
                 size={575}
               />
             </motion.div>
 
             <motion.div>
-              <DeployCard onDeploy={() => navigate("/team-view")} />
+              <DeployCard onDeploy={() => navigate("/agent-view")} />
             </motion.div>
           </motion.div>
         )}
