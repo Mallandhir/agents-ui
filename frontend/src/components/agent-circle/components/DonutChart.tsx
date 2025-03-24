@@ -172,9 +172,8 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
         .attr("fx", centroid[0])
         .attr("fy", centroid[1]);
 
-      gradient.append("stop").attr("offset", "0%").attr("stop-color", "#E8B8F0");
-
-      gradient.append("stop").attr("offset", "100%").attr("stop-color", "#D5A1E5");
+      gradient.append("stop").attr("offset", "0%").attr("stop-color", "#CE92D6");
+      gradient.append("stop").attr("offset", "100%").attr("stop-color", "#E8B8F0");
     });
   };
 

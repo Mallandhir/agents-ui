@@ -15,7 +15,7 @@ export const ResearchCard: React.FC<ResearchCardProps> = ({ response, onClickDet
         <CardContent className="flex w-full flex-col sm:flex-row px-4 py-2 items-start sm:items-center gap-3">
           <div className="gap-0.5 flex-1 grow flex flex-col items-start">
             <div
-              className="w-fit -mt-px [font-family:'PP_Neue_Montreal-Medium',Helvetica] font-medium text-xs tracking-wider leading-4 whitespace-nowrap"
+              className="w-fit -mt-px font-medium text-xs tracking-wider leading-4 whitespace-nowrap"
               style={{
                 background: "linear-gradient(173deg, rgba(187,144,242,1) 0%, rgba(227,146,227,1) 100%)",
                 WebkitBackgroundClip: "text",
@@ -26,7 +26,7 @@ export const ResearchCard: React.FC<ResearchCardProps> = ({ response, onClickDet
             >
               {response.title}
             </div>
-            <div className="self-stretch break-words [font-family:'PP_Neue_Montreal-Medium',Helvetica] font-medium text-basegraphite text-xs tracking-[0] leading-4">
+            <div className="self-stretch break-words font-medium text-basegraphite text-xs tracking-[0] leading-4">
               {response.content}
             </div>
           </div>
@@ -35,9 +35,7 @@ export const ResearchCard: React.FC<ResearchCardProps> = ({ response, onClickDet
             className="px-2 py-1 h-auto rounded-lg border border-solid border-[#00000008] shadow-[inset_0px_4px_8.9px_#ffffff40] [background:linear-gradient(0deg,rgba(218,203,225,0.13)_0%,rgba(218,203,225,0.13)_100%)]"
             onClick={onClickDetails}
           >
-            <span className="[font-family:'PP_Neue_Montreal-Medium',Helvetica] font-medium text-[#c072ca] text-xs tracking-[0] leading-4 whitespace-nowrap">
-              DETAILS
-            </span>
+            <span className="font-medium text-[#c072ca] text-xs tracking-[0] leading-4 whitespace-nowrap">DETAILS</span>
           </Button>
         </CardContent>
       </Card>

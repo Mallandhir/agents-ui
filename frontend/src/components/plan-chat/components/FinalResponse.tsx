@@ -10,7 +10,7 @@ export const FinalResponse: React.FC<FinalResponseProps> = ({ response }) => {
   return (
     <>
       <Separator className="w-full h-px" />
-      <div className="self-stretch break-words [font-family:'PP_Neue_Montreal-Medium',Helvetica] font-medium text-[#353535] text-xs tracking-[0] leading-4">
+      <div className="self-stretch break-words font-medium text-[#353535] text-xs tracking-[0] leading-4">
         {response.content}
       </div>
     </>
