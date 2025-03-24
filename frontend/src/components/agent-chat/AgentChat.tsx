@@ -43,10 +43,8 @@ export const AgentChat: React.FC = () => {
         </div>
         <ChatInput placeholder="Chat with Nova" onSend={handleSendMessage} onVoice={handleVoiceInput} />
       </div>
-      <div>
-        <div className="bg-white rounded-xl">
-          <AgentCircle onClickDetails={() => {}} />
-        </div>
+      <div className="-mr-48 self-center">
+        <AgentCircle onClickDetails={() => {}} />
       </div>
     </div>
   );

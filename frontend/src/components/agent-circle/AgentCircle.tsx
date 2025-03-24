@@ -19,10 +19,10 @@ export const AgentCircle: React.FC<AgentCircleProps> = ({ onClickDetails }) => {
 
   return (
     <div>
-      <div className="relative w-[738px] h-[738px]">
+      <div className={`relative w-[575px] h-[575px]`}>
         {/* Donut Chart */}
-        <div className="absolute inset-0">
-          <DonutChart data={data} width={738} height={738} onEntityClick={handleEntityClick} />
+        <div>
+          <DonutChart data={data} width={575} height={575} onEntityClick={handleEntityClick} />
         </div>
 
         {/* Center card */}

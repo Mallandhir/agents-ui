@@ -28,7 +28,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
     const pie = d3
       .pie<EntityData>()
       .value(() => 1)
-      .padAngle(0.01);
+      .padAngle(0.015);
     return pie(data);
   };
 
@@ -53,13 +53,13 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
       .attr("transform", `translate(${width / 2},${height / 2})`);
 
     // Create gradients
-    createGradients(svg, pieData, radius, innerRadius);
-
+    createActiveGradients(svg, pieData, radius, innerRadius);
+    createInactiveGradients(svg, pieData, radius, innerRadius);
     // Create chart group for rotation
     const chartGroup = svg.append("g").attr("id", "chart-group").attr("transform", `rotate(${currentRotation})`);
 
     // Create arc generator
-    const arc = d3.arc().innerRadius(innerRadius).outerRadius(radius).cornerRadius(6);
+    const arc = d3.arc().innerRadius(innerRadius).outerRadius(radius).cornerRadius(5);
 
     // Create segments
     createSegments(chartGroup, pieData, arc as any);
@@ -91,7 +91,9 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
       // Check if this segment is at the active position (left side)
       const isAtActivePosition = Math.abs(normalizedAngle - ACTIVE_POSITION) < 10;
 
-      return isAtActivePosition && activeSegment === d.data.id ? `url(#gradient-${d.data.id})` : "#F9F9FB";
+      return isAtActivePosition && activeSegment === d.data.id
+        ? `url(#active-gradient-${d.data.id})`
+        : `url(#inactive-gradient-${d.data.id})`;
     });
   }, [activeSegment, currentRotation]);
 
@@ -148,7 +150,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
   }, [currentRotation]);
 
   // Create gradient definitions
-  const createGradients = (
+  const createActiveGradients = (
     svg: d3.Selection<SVGGElement, unknown, null, undefined>,
     pieData: d3.PieArcDatum<EntityData>[],
     radius: number,
@@ -162,7 +164,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
 
       const gradient = defs
         .append("radialGradient")
-        .attr("id", `gradient-${d.data.id}`)
+        .attr("id", `active-gradient-${d.data.id}`)
         .attr("gradientUnits", "userSpaceOnUse")
         .attr("cx", "0")
         .attr("cy", "0")
@@ -173,6 +175,33 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
       gradient.append("stop").attr("offset", "0%").attr("stop-color", "#E8B8F0");
 
       gradient.append("stop").attr("offset", "100%").attr("stop-color", "#D5A1E5");
+    });
+  };
+
+  const createInactiveGradients = (
+    svg: d3.Selection<SVGGElement, unknown, null, undefined>,
+    pieData: d3.PieArcDatum<EntityData>[],
+    radius: number,
+    innerRadius: number
+  ) => {
+    const defs = svg.append("defs");
+
+    pieData.forEach((d) => {
+      const arcGenerator = d3.arc().innerRadius(innerRadius).outerRadius(radius);
+      const centroid = arcGenerator.centroid(d as any);
+
+      const gradient = defs
+        .append("radialGradient")
+        .attr("id", `inactive-gradient-${d.data.id}`)
+        .attr("gradientUnits", "userSpaceOnUse")
+        .attr("cx", "0")
+        .attr("cy", "0")
+        .attr("r", radius)
+        .attr("fx", centroid[0])
+        .attr("fy", centroid[1]);
+
+      gradient.append("stop").attr("offset", "0%").attr("stop-color", "#00000010");
+      gradient.append("stop").attr("offset", "100%").attr("stop-color", "#00000003");
     });
   };
 

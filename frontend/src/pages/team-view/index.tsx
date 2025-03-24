@@ -5,11 +5,16 @@ const TeamView: React.FC = () => {
 
   return (
     <>
-      <AgentCircle
-        onClickDetails={() => {
-          navigate("/agent-view");
-        }}
-      />
+      <div className="h-screen w-full p-4">
+        <div className="text-light">Your Virtual Team</div>
+        <div className="flex justify-center items-center">
+          <AgentCircle
+            onClickDetails={() => {
+              navigate("/agent-view");
+            }}
+          />
+        </div>
+      </div>
     </>
   );
 };
