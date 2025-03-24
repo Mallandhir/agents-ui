@@ -1,16 +1,15 @@
+import AgentView from "@/pages/agent-view";
+import Home from "@/pages/home";
+import Planner from "@/pages/planner";
+import TeamView from "@/pages/team-view";
 import { ILayout } from "@/types/layout.types";
 import { IRule } from "@/types/routeRules.types";
 import React from "react";
 
-const Home = React.lazy(() => import("@/pages/home"));
-const TeamView = React.lazy(() => import("@/pages/team-view"));
-const AgentView = React.lazy(() => import("@/pages/agent-view"));
-const Planner = React.lazy(() => import("@/pages/planner"));
-
 const routes: {
   path: string;
   layout: ILayout;
-  component: React.LazyExoticComponent<React.FC>;
+  component: React.FC;
   rules: IRule[];
 }[] = [
   {
