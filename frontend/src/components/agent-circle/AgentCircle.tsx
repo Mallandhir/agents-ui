@@ -6,9 +6,10 @@ import { EntityData } from "./types";
 
 interface AgentCircleProps {
   onClickDetails: () => void;
+  size?: number;
 }
 
-export const AgentCircle: React.FC<AgentCircleProps> = ({ onClickDetails }) => {
+export const AgentCircle: React.FC<AgentCircleProps> = ({ onClickDetails, size = 500 }) => {
   const [selectedEntity, setSelectedEntity] = useState<EntityData>(entitiesData[0]);
   const [data, setData] = useState<EntityData[]>(entitiesData);
 
@@ -19,10 +20,10 @@ export const AgentCircle: React.FC<AgentCircleProps> = ({ onClickDetails }) => {
 
   return (
     <div>
-      <div className={`relative w-[575px] h-[575px]`}>
+      <div className={`relative w-[${size}px] h-[${size}px]`}>
         {/* Donut Chart */}
         <div>
-          <DonutChart data={data} width={575} height={575} onEntityClick={handleEntityClick} />
+          <DonutChart data={data} width={size} height={size} onEntityClick={handleEntityClick} />
         </div>
 
         {/* Center card */}

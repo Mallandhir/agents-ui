@@ -17,7 +17,7 @@ export const AgentChat: React.FC = () => {
 
   return (
     <div className="flex flex-row justify-between gap-2 w-full p-4">
-      <div className="rounded-xl bg-white w-full h-full flex flex-col justify-between">
+      <div className="rounded-xl bg-white w-full h-full flex flex-col justify-between min-w-1/2 max-w-[625px]">
         <div className="flex flex-col w-full items-start gap-3 p-4">
           <Header
             title={HEADER_INFO.title}
@@ -43,8 +43,8 @@ export const AgentChat: React.FC = () => {
         </div>
         <ChatInput placeholder="Chat with Nova" onSend={handleSendMessage} onVoice={handleVoiceInput} />
       </div>
-      <div className="-mr-48 self-center">
-        <AgentCircle onClickDetails={() => {}} />
+      <div className="-mr-48  self-center">
+        <AgentCircle onClickDetails={() => {}} size={650} />
       </div>
     </div>
   );

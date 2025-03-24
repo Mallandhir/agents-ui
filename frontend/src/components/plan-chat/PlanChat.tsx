@@ -46,6 +46,7 @@ export const PlanChat: React.FC = () => {
             onClickDetails={() => {
               navigate("/agent-view");
             }}
+            size={625}
           />
           <div>
             <DeployCard onDeploy={() => navigate("/team-view")} />

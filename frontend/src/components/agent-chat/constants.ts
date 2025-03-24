@@ -17,11 +17,11 @@ export const BADGES = {
   ENTIRE_PERIOD: {
     text: "Entire Period",
     className:
-      "px-1 py-0.5 mr-1 rounded shadow-[inset_0px_4px_8.9px_#ffffff40] bg-[rgba(218,203,225,0.13)] text-[#c072ca] text-xs"
+      "px-1 py-0.5 mr-1 rounded shadow-[inset_0px_4px_8.9px_#ffffff40] bg-[rgba(218,203,225,0.13)] text-[#c072ca] text-xs border-none font-normal"
   },
   DATE_RANGE: {
     text: DATE_RANGE,
-    className: "px-2 py-1 rounded shadow-[inset_0px_4px_8.9px_#ffffff40] text-[#292929] text-xs"
+    className: "px-2 py-1 rounded shadow-[inset_0px_4px_8.9px_#ffffff40] text-[#292929] text-xs border-none font-normal"
   },
   PREVIEW: {
     text: "PREVIEW",
