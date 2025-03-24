@@ -1,35 +1,69 @@
 import { AgentCircle } from "@/components/agent-circle";
 import { DeployCard } from "@/components/deploy-card";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatTextarea from "../start-mission/components/ChatTextarea";
+import { chatSectionVariants, sidebarVariants } from "./animations";
 import ChatSection from "./components/ChatSection";
 
 export const PlanChat: React.FC = () => {
   const navigate = useNavigate();
   const [showAgentCircle, setShowAgentCircle] = useState(false);
-  return (
-    <div className="min-h-screen max-h-screen flex flex-row justify-center gap-10 w-full py-3 pe-2">
-      <div className="flex flex-col justify-between">
-        <ChatSection onClickDetails={() => setShowAgentCircle(true)} />
 
-        <div className="flex flex-col w-full max-w-lg mx-auto items-end">
-          <ChatTextarea placeholder="Type your instructions here..." value={""} onChange={() => {}} onSend={() => {}} />
-        </div>
-      </div>
-      {showAgentCircle && (
-        <div className="bg-white rounded-xl p-3">
-          <AgentCircle
-            onClickDetails={() => {
-              navigate("/agent-view");
-            }}
-            size={575}
-          />
-          <div>
-            <DeployCard onDeploy={() => navigate("/team-view")} />
+  const toggleAgentCircle = () => {
+    setShowAgentCircle((prev) => !prev);
+  };
+
+  return (
+    <motion.div className="min-h-screen max-h-screen flex flex-row justify-center gap-10 w-full py-3 pe-2">
+      <AnimatePresence>
+        <motion.div
+          layout
+          id="chat-section"
+          className="flex flex-col justify-between"
+          variants={chatSectionVariants}
+          animate={showAgentCircle ? "shifted" : "initial"}
+          exit="exit"
+        >
+          <ChatSection onClickDetails={toggleAgentCircle} />
+
+          <div className="flex flex-col w-full max-w-lg mx-auto items-end">
+            <ChatTextarea
+              placeholder="Type your instructions here..."
+              value={""}
+              onChange={() => {}}
+              onSend={() => {}}
+            />
           </div>
-        </div>
-      )}
-    </div>
+        </motion.div>
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showAgentCircle && (
+          <motion.div
+            id="output-section"
+            className="bg-white rounded-xl p-3"
+            variants={sidebarVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <motion.div>
+              <AgentCircle
+                onClickDetails={() => {
+                  navigate("/agent-view");
+                }}
+                size={575}
+              />
+            </motion.div>
+
+            <motion.div>
+              <DeployCard onDeploy={() => navigate("/team-view")} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
