@@ -23,11 +23,11 @@ function AppRoutes() {
               path={route.path}
               element={
                 <ApplyRouteRules key={ruleKey} rules={route.rules}>
-                  <SuspenseWrapper>
-                    <Layout type={route.layout}>
+                  <Layout type={route.layout}>
+                    <SuspenseWrapper>
                       <route.component />
-                    </Layout>
-                  </SuspenseWrapper>
+                    </SuspenseWrapper>
+                  </Layout>
                 </ApplyRouteRules>
               }
             />
