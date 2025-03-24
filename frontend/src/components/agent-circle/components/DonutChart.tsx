@@ -260,7 +260,7 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
 
   return (
     <div ref={containerRef} className="relative w-full h-full">
-      <svg ref={svgRef} className="absolute top-0 left-0" />
+      <svg ref={svgRef} />
       {labelPositions.map((pos, index) => {
         const midAngle =
           ((getPieData()[index].startAngle + getPieData()[index].endAngle) / 2) * (180 / Math.PI) + currentRotation;
