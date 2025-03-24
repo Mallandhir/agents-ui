@@ -9,12 +9,7 @@ export const Header: React.FC<HeaderProps> = ({ title, subtitle, progress, avata
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
-            <div className={`relative w-6 h-6 bg-[url(${avatarUrl})] bg-cover bg-center`}>
-              <div className="relative w-4 h-4 top-1 left-1 rounded-lg border border-solid border-white">
-                <div className="relative h-2 top-3 -left-px rounded border border-solid border-white" />
-              </div>
-            </div>
-
+            <img src={avatarUrl} alt="Avatar" className="w-6 h-6 rounded-full" />
             <div className="flex flex-col items-start justify-center gap-1.5">
               <div className="font-medium text-[#292929] text-base">{title}</div>
             </div>

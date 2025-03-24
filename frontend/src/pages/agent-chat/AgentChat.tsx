@@ -1,4 +1,6 @@
+import novaimage from "@/assets/images/nova.svg";
 import React from "react";
+import { AgentCircle } from "../agent-circle";
 import { ChatInput } from "./components/ChatInput";
 import { Header } from "./components/Header";
 import { ReportsSnapshot } from "./components/ReportsSnapshot";
@@ -14,14 +16,14 @@ export const AgentChat: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-[585px]">
-      <div className="rounded-xl">
+    <div className="flex flex-row justify-between gap-2 w-full p-4">
+      <div className="rounded-xl bg-white w-full h-full flex flex-col justify-between">
         <div className="flex flex-col w-full items-start gap-3 p-4">
           <Header
             title={HEADER_INFO.title}
             subtitle={HEADER_INFO.subtitle}
             progress={PROGRESS_VALUE}
-            avatarUrl="/ellipse-131.svg"
+            avatarUrl={novaimage}
           />
           <ReportsSnapshot
             title="Reports Snapshot"
@@ -40,6 +42,11 @@ export const AgentChat: React.FC = () => {
           />
         </div>
         <ChatInput placeholder="Chat with Nova" onSend={handleSendMessage} onVoice={handleVoiceInput} />
+      </div>
+      <div>
+        <div className="bg-white rounded-xl">
+          <AgentCircle />
+        </div>
       </div>
     </div>
   );

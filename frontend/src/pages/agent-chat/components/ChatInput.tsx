@@ -16,9 +16,9 @@ export const ChatInput: React.FC<ChatInputProps> = ({ placeholder, onSend, onVoi
 
   return (
     <div className="w-full px-6 py-4">
-      <div className="relative w-full h-12 rounded-lg border border-solid border-[#00000008]">
+      <div className="relative w-full h-12 rounded-lg">
         <Input
-          className="h-12 pl-4 pr-16 text-sm text-[#292929]"
+          className="h-12 pl-4 pr-16 text-sm text-[#292929] border border-gray-300 focus:border-gray-300"
           placeholder={placeholder}
           value={message}
           onChange={(e) => setMessage(e.target.value)}

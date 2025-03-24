@@ -15,7 +15,7 @@ export const CenterCard: React.FC<EntityCardProps> = ({ entity, onEntityClick })
         <div className="flex flex-col items-center gap-[17.73px] relative self-stretch w-full flex-[0_0_auto] mt-[-0.95px]">
           <div className="inline-flex items-center gap-[26.59px] relative flex-[0_0_auto]">
             {/* Center icon */}
-            <img src={entity.imageSrc} alt={entity.name} className="" />
+            <img src={entity.imageSrc} alt={entity.name} className="w-10 h-10" />
 
             {/* Center Nova info */}
             <div className="flex flex-col w-[93.08px] items-start justify-center gap-[8.86px] relative">

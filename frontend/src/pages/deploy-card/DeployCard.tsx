@@ -1,7 +1,11 @@
 import { Button } from "@/components/deploy-card/ui/button";
 import { Card, CardContent } from "@/components/deploy-card/ui/card";
 
-export const DeployCard: React.FC = () => {
+interface DeployCardProps {
+  onDeploy: () => void;
+}
+
+export const DeployCard: React.FC<DeployCardProps> = ({ onDeploy }) => {
   return (
     <div className="w-full max-w-4xl mx-auto p-4">
       <div className="rounded-xl bg-white">
@@ -43,7 +47,10 @@ export const DeployCard: React.FC = () => {
                     // Unleash Elite AI &amp; Human Agents
                   </div>
 
-                  <Button className="w-full md:w-64 h-8 rounded-lg border-none shadow-[inset_0px_4px_8.9px_#ffffff40] [background:linear-gradient(173deg,rgba(187,144,242,1)_0%,rgba(227,146,227,1)_100%)] text-white font-medium text-sm">
+                  <Button
+                    className="w-full md:w-64 h-8 rounded-lg border-none shadow-[inset_0px_4px_8.9px_#ffffff40] [background:linear-gradient(173deg,rgba(187,144,242,1)_0%,rgba(227,146,227,1)_100%)] text-white font-medium text-sm"
+                    onClick={onDeploy}
+                  >
                     DEPLOY NOW
                   </Button>
                 </div>
