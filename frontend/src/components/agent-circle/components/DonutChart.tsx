@@ -9,9 +9,10 @@ interface DonutChartProps {
   width: number;
   height: number;
   onEntityClick: (entity: EntityData) => void;
+  centerContent?: React.ReactNode;
 }
 
-export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onEntityClick }) => {
+export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onEntityClick, centerContent }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeSegment, setActiveSegment] = useState<string | null>(null);
@@ -32,13 +33,15 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
     return pie(data);
   };
 
+  const radius = Math.min(width, height) / 2;
+  const innerRadius = radius * 0.5;
   // Initialize and render chart
   useEffect(() => {
     if (!svgRef.current || !containerRef.current) return;
 
     // Calculate dimensions
-    const radius = Math.min(width, height) / 2;
-    const innerRadius = radius * 0.5;
+    // const radius = Math.min(width, height) / 2;
+    // const innerRadius = radius * 0.5;
     const pieData = getPieData();
 
     // Clear previous content
@@ -281,6 +284,15 @@ export const DonutChart: React.FC<DonutChartProps> = ({ data, width, height, onE
           containerRef.current!
         );
       })}
+
+      {centerContent &&
+        containerRef.current &&
+        createPortal(
+          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+            {centerContent}
+          </div>,
+          containerRef.current
+        )}
     </div>
   );
 };

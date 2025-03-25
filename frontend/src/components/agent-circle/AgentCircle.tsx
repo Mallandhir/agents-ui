@@ -25,14 +25,15 @@ export const AgentCircle: React.FC<AgentCircleProps> = ({ onClickEntity, onClick
       <div className={`relative w-[${size}px] h-[${size}px]`}>
         {/* Donut Chart */}
         <div>
-          <DonutChart data={data} width={size} height={size} onEntityClick={handleEntityClick} />
-        </div>
-
-        {/* Center card */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="pointer-events-auto">
-            <CenterCard entity={selectedEntity} onEntityClick={handleEntityClick} onClickDetails={onClickDetails} />
-          </div>
+          <DonutChart
+            data={data}
+            width={size}
+            height={size}
+            onEntityClick={handleEntityClick}
+            centerContent={
+              <CenterCard entity={selectedEntity} onEntityClick={handleEntityClick} onClickDetails={onClickDetails} />
+            }
+          />
         </div>
       </div>
     </div>
