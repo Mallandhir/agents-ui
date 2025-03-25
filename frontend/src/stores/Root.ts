@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { createContext } from "react";
+import GroupChat from "./GroupChat";
 import User from "./User";
 
 export class RootStore {
@@ -8,6 +9,7 @@ export class RootStore {
 
   // stores/models
   user!: User;
+  groupChat!: GroupChat;
 
   constructor() {
     makeAutoObservable(this);
@@ -16,6 +18,7 @@ export class RootStore {
 
   public init() {
     this.user = new User();
+    this.groupChat = new GroupChat();
   }
 }
 

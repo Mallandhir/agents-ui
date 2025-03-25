@@ -11,6 +11,9 @@ export default defineConfig({
       plugins: [tailwind()]
     }
   },
+  define: {
+    "process.env": {}
+  },
   base: "/",
   resolve: {
     alias: {

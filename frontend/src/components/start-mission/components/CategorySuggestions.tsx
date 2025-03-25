@@ -1,4 +1,5 @@
 import { Button } from "@/components/start-mission/ui/button";
+import { Fragment } from "react/jsx-runtime";
 
 interface ICategorySuggestions {
   categories: {
@@ -20,7 +21,7 @@ const CategorySuggestions: React.FC<ICategorySuggestions> = ({ categories, selec
         {categories.map((category) => {
           const isSelected = selectedCategory === category.id;
           return (
-            <>
+            <Fragment key={category.id}>
               <Button
                 key={category.id}
                 variant="outline"
@@ -39,7 +40,7 @@ const CategorySuggestions: React.FC<ICategorySuggestions> = ({ categories, selec
                   {category.name}
                 </span>
               </Button>
-            </>
+            </Fragment>
           );
         })}
       </div>
