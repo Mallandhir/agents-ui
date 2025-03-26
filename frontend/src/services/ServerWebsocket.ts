@@ -14,7 +14,7 @@ import Logger from "@/services/Logger";
 
 const logger = new Logger("ServerWebsocket");
 
-const baseUrl = process.env.REACT_APP_BACKEND_URI;
+const baseUrl = import.meta.env.VITE_APP_BACKEND_URI;
 
 function getFullWsUrl(url: string): string {
   if (url[0] === "/") {

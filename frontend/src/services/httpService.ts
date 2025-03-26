@@ -18,7 +18,7 @@ class HttpService {
    * Handles common error responses and redirects if necessary.
    */
   private _configureAxiosGlobalDefaults(): void {
-    axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URI;
+    axios.defaults.baseURL = import.meta.env.VITE_APP_BACKEND_URI;
 
     axios.defaults.withCredentials = true;
 
