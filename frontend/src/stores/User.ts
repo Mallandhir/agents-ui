@@ -1,3 +1,4 @@
+import { IGetUserResponse, ILoginApi } from "@/types/api/userApi.types";
 import { makeAutoObservable } from "mobx";
 import AppResource from "../lib/AppResource";
 import Logger from "../services/Logger";
@@ -6,36 +7,16 @@ import { IUser } from "../types/user.types";
 
 const logger = new Logger("store: User");
 
-interface IGetUserResponse {
-  contextUser: IUser;
-  loggedInUser: IUser;
-}
-
-interface IUpdateUserRequest {
-  params: {
-    _id: string;
-  };
-  body: Partial<Pick<IUser, "name" | "mail" | "linkedInUserInfo">>;
-}
-
-export interface IUpdateUserResponse {
-  status: boolean;
-  message?: string;
-  user?: IUser;
-}
-
 class User {
   model = "user";
 
   data!: AppResource<IGetUserResponse>;
+  loginResource!: AppResource<ILoginApi["response"]>;
 
   constructor() {
     makeAutoObservable(this);
 
-    this.data = new AppResource<{
-      contextUser: IUser;
-      loggedInUser: IUser;
-    }>({
+    this.data = new AppResource<IGetUserResponse>({
       dataGetter: () => this._getUser(),
       callbacks: {
         fulfilled: this._onGetUserFulfilled
@@ -59,35 +40,35 @@ class User {
     };
   };
 
-  public updateUser = (request: IUpdateUserRequest) => {
-    const resource = new AppResource<IUpdateUserResponse>({
-      dataGetter: () => this._updateUser(request)
+  login(details: ILoginApi["request"]): AppResource<ILoginApi["response"]> {
+    this.loginResource = new AppResource<ILoginApi["response"]>({
+      dataGetter: async () => {
+        const response = await httpService.post("login/standard", details.body);
+        const user = response as IUser;
+        return {
+          success: Boolean(user?._id),
+          message: "Login successful",
+          user: user
+        };
+      }
+    });
+
+    return this.loginResource;
+  }
+
+  public logout = () => {
+    const resource = new AppResource<{ success: boolean }>({
+      dataGetter: async () => {
+        await httpService.get(`user/logout`);
+        this.data.setData({
+          contextUser: undefined,
+          loggedInUser: undefined
+        });
+        return { success: true };
+      }
     });
 
     return resource;
-  };
-
-  private _updateUser = async (request: IUpdateUserRequest) => {
-    const response = await httpService.patch<IUpdateUserRequest["body"], IUpdateUserResponse>(
-      `user/${request.params._id}/updateDetails`,
-      request.body
-    );
-
-    this.data.setData((prev) => {
-      return {
-        ...prev,
-        contextUser: {
-          ...prev.contextUser,
-          ...request.body
-        }
-      };
-    });
-
-    return response;
-  };
-
-  public logout = async () => {
-    await httpService.get(`user/logout`);
   };
 }
 

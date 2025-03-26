@@ -1,11 +1,9 @@
 import { AlertTriangle } from "lucide-react";
 import { FallbackProps } from "react-error-boundary";
-import { useNavigate } from "react-router-dom";
 import Layout from "./Layout";
 
 function ErrorPage({ error, resetErrorBoundary }: FallbackProps) {
   console.log("[ErrorBoundary]", error, error?.message);
-  const navigate = useNavigate();
 
   return (
     <Layout type="main">
@@ -18,7 +16,7 @@ function ErrorPage({ error, resetErrorBoundary }: FallbackProps) {
           We are working on it. Please try again later or contact support if the error persists.
         </p>
         <div>
-          <div className="cursor-pointer" onClick={() => navigate("/")}>
+          <div className="cursor-pointer" onClick={() => (window.location.href = "/")}>
             <i className="bi bi-arrow-left me-1"></i>Take me back to Home
           </div>
         </div>

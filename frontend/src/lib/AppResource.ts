@@ -1,6 +1,6 @@
+import { IAsyncResourceStatus } from "@/types/appResource";
 import { AxiosError } from "axios";
 import { makeAutoObservable, runInAction } from "mobx";
-import { IAsyncResourceStatus } from "../../types";
 
 interface IAsyncResourceCallbacks<T> {
   fulfilled?: (data: T) => void;
@@ -50,9 +50,7 @@ export default class AppResource<TResponse, TMetadata = any> {
     this.callbacks = initData.callbacks;
   }
 
-  private _initResourceObject(
-    options: { silent: boolean } = { silent: false }
-  ) {
+  private _initResourceObject(options: { silent: boolean } = { silent: false }) {
     this.status = "pending";
     // Call the onPending callback if provided
     this.callbacks?.pending?.();
@@ -80,7 +78,7 @@ export default class AppResource<TResponse, TMetadata = any> {
             this.error = err;
             this.callbacks?.rejected?.(err);
           });
-        }),
+        })
     };
 
     return this;
@@ -162,14 +160,8 @@ export default class AppResource<TResponse, TMetadata = any> {
    * this method will be called, and it will delegate to the `fetch` method.
    */
   then<TResult1 = TResponse, TResult2 = never>(
-    onfulfilled?:
-      | ((value: TResponse | null) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onrejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null
+    onfulfilled?: ((value: TResponse | null) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
   ): Promise<TResult1 | TResult2> {
     return this.fetch().then(onfulfilled, onrejected);
   }
@@ -179,10 +171,7 @@ export default class AppResource<TResponse, TMetadata = any> {
    * this method will be called, and it will delegate to the `fetch` method.
    */
   catch<TResult = never>(
-    onrejected?:
-      | ((reason: any) => TResult | PromiseLike<TResult>)
-      | undefined
-      | null
+    onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
   ): Promise<TResponse | TResult | null> {
     return this.fetch().catch(onrejected);
   }
@@ -192,9 +181,7 @@ export default class AppResource<TResponse, TMetadata = any> {
     runInAction(() => {
       if (this.response) {
         if (typeof update === "function") {
-          this.response = (update as IUpdateWithPrevFn<TResponse>)(
-            this.response
-          );
+          this.response = (update as IUpdateWithPrevFn<TResponse>)(this.response);
         } else {
           this.response = update;
         }
@@ -209,9 +196,7 @@ export default class AppResource<TResponse, TMetadata = any> {
       Object.keys(data).forEach((k) => {
         const key = k as keyof TResponse;
         if (this.response) {
-          this.response[key] = data[
-            key
-          ] as NonNullable<TResponse>[keyof TResponse];
+          this.response[key] = data[key] as NonNullable<TResponse>[keyof TResponse];
         }
       });
     });
