@@ -26,7 +26,7 @@ export const BADGES = {
   PREVIEW: {
     text: "PREVIEW",
     className:
-      "px-2 py-1 rounded-lg border border-solid border-[#00000008] shadow-[inset_0px_4px_8.9px_#ffffff40] bg-[rgba(218,203,225,0.13)] text-[#c072ca] text-xs"
+      "px-2 py-1 cursor-pointer hover:bg-[#DB91E530] transition-all duration-300 rounded-md font-normal border border-solid border-[#00000008] shadow-[inset_0px_4px_8.9px_#ffffff40] bg-[rgba(218,203,225,0.13)] text-[#c072ca] text-xs"
   }
 } as const;
 

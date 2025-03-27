@@ -1,3 +1,5 @@
+import { IAgentThinkingStep } from "@/stores/GroupChat";
+
 export interface HeaderProps {
   title: string;
   subtitle: string;
@@ -16,13 +18,15 @@ export interface SummaryCardProps {
 
 export interface OutputDataProps {
   title: string;
-  label: string;
-  industries: string[];
+  output: {
+    text: string;
+  };
 }
 
-export interface ThinkingProcessProps {
+export interface IThinkingProcessCard {
   title: string;
-  steps: string[];
+  steps: IAgentThinkingStep[];
+  onClickPreview: (step: IAgentThinkingStep) => void;
 }
 
 export interface ChatInputProps {
@@ -33,12 +37,11 @@ export interface ChatInputProps {
 
 export interface ReportsSnapshotProps {
   title: string;
-  dateRange: string;
   badges: {
     text: string;
     className: string;
   }[];
   summaryData: Omit<SummaryCardProps, "title">;
   outputData: Omit<OutputDataProps, "title">;
-  thinkingProcess: Omit<ThinkingProcessProps, "title">;
+  thinkingProcess: Omit<IThinkingProcessCard, "title">;
 }

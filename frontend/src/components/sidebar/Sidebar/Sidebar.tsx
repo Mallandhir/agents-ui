@@ -25,8 +25,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isExpanded, onToggle, missions
         <div className={`w-60 h-full`}>
           {/* App Logo and Name */}
           <div className="flex justify-center gap-10 pt-5 px-9">
-            <div className="relative w-fit font-normal text-[#292929] text-2xl tracking-[-1px] leading-7 whitespace-nowrap">
-              <span>Oneshot AI</span>
+            <div>
+              <img src="/logo-long.svg" alt="OneShot AI" width={"120px"} />
             </div>
           </div>
 
