@@ -1,3 +1,4 @@
+import AuthLoading from "@/components/loaders/AuthLoading";
 import { IRule, IRuleKey, IRuleStatus } from "@/types/routeRules.types";
 import React, { useRef, useState } from "react";
 
@@ -7,7 +8,7 @@ type IRuleMetadata = Record<IRuleStatus, IRuleStatusMetadata>;
 const statusMetadata: Record<IRuleKey, IRuleMetadata> = {
   authenticate: {
     validating: {
-      fallback: "Authenticating..."
+      fallback: <AuthLoading />
     },
     valid: {
       fallback: "Authenticated"

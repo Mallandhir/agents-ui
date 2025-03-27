@@ -1,11 +1,11 @@
 import { Input } from "@/components/agent-chat/ui/input";
+import AuthLoading from "@/components/loaders/AuthLoading";
 import { Button } from "@/components/start-mission/ui/button";
 import useStore from "@/hooks/useStore";
 import AppResource from "@/lib/AppResource";
 import { cn } from "@/lib/utils";
 import Logger from "@/services/Logger";
 import { ILoginApi } from "@/types/api/userApi.types";
-import { Loader2Icon } from "lucide-react";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -43,16 +43,15 @@ const Login: React.FC = () => {
     }
   };
 
+  if (loginResource?.status === "pending") {
+    return <AuthLoading />;
+  }
+
   return (
     <div className="flex flex-col gap-4 items-center justify-center h-screen">
       <h1 className="text-2xl font-normal">Login</h1>
 
-      <div
-        className={cn(
-          "flex flex-col gap-4 items-center justify-center",
-          loginResource?.status === "pending" && "opacity-50 pointer-events-none"
-        )}
-      >
+      <div className={cn("flex flex-col gap-4 items-center justify-center")}>
         <Input type="text" placeholder="Email" value={username} onChange={(e) => setUsername(e.target.value)} />
         <Input
           type="password"
@@ -66,7 +65,6 @@ const Login: React.FC = () => {
           }}
         />
         <Button onClick={handleLogin} variant="default">
-          {loginResource?.status === "pending" && <Loader2Icon size={14} className="animate-spin" />}
           Login
         </Button>
       </div>
