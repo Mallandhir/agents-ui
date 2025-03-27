@@ -1,26 +1,60 @@
-import novaimage from "@/assets/images/nova.svg";
-import { AgentCircle } from "@/components/agent-circle";
+import useStore from "@/hooks/useStore";
 import { cn } from "@/lib/utils";
+import ServerWebsocket from "@/services/ServerWebsocket";
+import { createTextMessageObj } from "@/utils/messageUtils";
 import { motion } from "framer-motion";
-import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import React, { useRef } from "react";
+import { CenterCard } from "../agent-circle/components/CenterCard";
+import { DonutChart, DonutChartRef } from "../agent-circle/components/DonutChart";
+import { AIMessage } from "../plan-chat/components/AIMessage";
+import { UserMessage } from "../plan-chat/components/UserMessage";
 import { agentCircleVariants, containerVariants } from "./animations";
 import { ChatInput } from "./components/ChatInput";
-import { Header } from "./components/Header";
-import { ReportsSnapshot } from "./components/ReportsSnapshot";
-import { BADGES, HEADER_INFO, PROGRESS_VALUE, RECOMMENDED_INDUSTRIES, SUMMARY_TEXT, THINKING_STEPS } from "./constants";
 
-export const AgentChat: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const agentId = searchParams.get("agentId");
+const chartSize = 650;
+
+const AgentChat: React.FC = () => {
+  const store = useStore();
+  const donutChartRef = useRef<DonutChartRef>(null);
+
+  const agentId = store.groupChat.activeAgentId;
+  const agents = store.groupChat.agents;
 
   const handleSendMessage = (message: string) => {
     console.log("Sending message:", message);
+
+    const messageObj = createTextMessageObj(message);
+    if (agentId) {
+      const teamId = Object.values(store.groupChat.teams).find((team) => team.agentIds.includes(agentId))?.id;
+      ServerWebsocket.send({
+        topic: "AGENT_USER_INPUT",
+        data: {
+          body: {
+            agent_id: agentId,
+            message: messageObj,
+            team_id: teamId
+          }
+        }
+      });
+    } else {
+      store.groupChat.kickoffTeam({
+        teamId: "Outbound Orchestrator Team",
+        message: messageObj,
+        callbacks: {
+          onHandoff: (event) => {
+            console.log("Handoff event:", event);
+          }
+        }
+      });
+    }
   };
 
   const handleVoiceInput = () => {
     console.log("Voice input activated");
   };
+
+  const agent = agents.find((agent) => agent.id === agentId);
 
   return (
     <motion.div
@@ -28,39 +62,29 @@ export const AgentChat: React.FC = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="flex flex-row justify-between gap-2 w-full p-4"
+      className="flex flex-row justify-between gap-2 w-[100vw] overflow-x-hidden p-4 h-[100vh]"
     >
-      {agentId && (
-        <motion.div
-          id="agent-view"
-          className="rounded-xl bg-white w-full h-full flex flex-col justify-between min-w-1/2 max-w-[625px]"
-        >
-          <div className="flex flex-col w-full items-start gap-3 p-4">
-            <Header
-              title={HEADER_INFO.title}
-              subtitle={HEADER_INFO.subtitle}
-              progress={PROGRESS_VALUE}
-              avatarUrl={novaimage}
-            />
-            <ReportsSnapshot
-              title="Reports Snapshot"
-              dateRange="1 Mar - Today"
-              badges={[BADGES.ENTIRE_PERIOD, BADGES.DATE_RANGE]}
-              summaryData={{
-                text: SUMMARY_TEXT
-              }}
-              outputData={{
-                label: "Recommended Industries",
-                industries: RECOMMENDED_INDUSTRIES
-              }}
-              thinkingProcess={{
-                steps: THINKING_STEPS
-              }}
-            />
+      <motion.div id="agent-view" className="rounded-xl w-full flex flex-col min-w-1/2 max-w-[625px] bg-white">
+        <div className="flex-1 overflow-y-auto">
+          <div className="flex flex-col w-full max-w-lg mx-auto gap-4 p-4">
+            {agent?.events?.map((event, index) => {
+              if (event.data.type !== "full_assistant_message") return null;
+              const message = event.data.message;
+              return (
+                <>
+                  {message.type === "user" ? (
+                    <UserMessage key={`message-${index}`} message={message} />
+                  ) : (
+                    <AIMessage key={`message-${index}`} message={message} />
+                  )}
+                </>
+              );
+            })}
           </div>
-          <ChatInput placeholder="Chat with Nova" onSend={handleSendMessage} onVoice={handleVoiceInput} />
-        </motion.div>
-      )}
+        </div>
+
+        <ChatInput placeholder="Chat with Nova" onSend={handleSendMessage} onVoice={handleVoiceInput} />
+      </motion.div>
       <motion.div
         variants={agentCircleVariants}
         initial="hidden"
@@ -68,16 +92,28 @@ export const AgentChat: React.FC = () => {
         id="team-view"
         className={cn("self-center", agentId ? "-mr-48  " : "w-full flex justify-center")}
       >
-        <AgentCircle
-          onClickEntity={(entity) => {
-            setSearchParams({ agentId: entity.id });
-          }}
-          onClickDetails={(entity) => {
-            setSearchParams({ agentId: entity.id });
-          }}
-          size={650}
-        />
+        {agents.length > 0 && (
+          <>
+            <div className={`relative w-[${chartSize}px] h-[${chartSize}px]`}>
+              <DonutChart
+                ref={donutChartRef}
+                data={agents}
+                activeEntity={agent}
+                width={chartSize}
+                height={chartSize}
+                onEntityClick={(entity) => {
+                  store.groupChat.setActiveAgentId(entity.id);
+                }}
+                centerContent={
+                  agent && <CenterCard entity={agent} onEntityClick={() => {}} onClickDetails={() => {}} />
+                }
+              />
+            </div>
+          </>
+        )}
       </motion.div>
     </motion.div>
   );
 };
+
+export default observer(AgentChat);

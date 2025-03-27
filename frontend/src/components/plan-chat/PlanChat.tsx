@@ -3,6 +3,7 @@ import { DeployCard } from "@/components/deploy-card";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { entitiesData } from "../agent-circle/data";
 import ChatTextarea from "../start-mission/components/ChatTextarea";
 import { chatSectionVariants, containerVariants, sidebarVariants } from "./animations";
 import ChatSection from "./components/ChatSection";
@@ -57,6 +58,7 @@ export const PlanChat: React.FC = () => {
           >
             <motion.div>
               <AgentCircle
+                entities={entitiesData}
                 onClickDetails={() => {
                   navigate("/agent-view");
                 }}

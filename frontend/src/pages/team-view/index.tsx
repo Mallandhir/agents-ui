@@ -1,4 +1,5 @@
 import { AgentCircle } from "@/components/agent-circle";
+import { entitiesData } from "@/components/agent-circle/data";
 import { useNavigate } from "react-router-dom";
 const TeamView: React.FC = () => {
   const navigate = useNavigate();
@@ -9,9 +10,11 @@ const TeamView: React.FC = () => {
         <div className="text-light">Your Virtual Team</div>
         <div className="flex justify-center items-center">
           <AgentCircle
+            entities={entitiesData}
             onClickDetails={() => {
               navigate("/agent-view");
             }}
+            onClickEntity={() => {}}
             size={625}
           />
         </div>

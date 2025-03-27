@@ -6,6 +6,8 @@ import quantumimage from "@/assets/images/quantum.svg";
 import synthimage from "@/assets/images/synth.svg";
 import { EntityData } from "./types";
 
+export const agent_images = [novaimage, nexusimage, quantumimage, pulseimage, synthimage, echoimage];
+
 export const entitiesData: EntityData[] = [
   {
     id: "omega-1",

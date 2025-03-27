@@ -1,6 +1,6 @@
 import { PlanChat } from "@/components/plan-chat";
 
-const Planner = () => {
+const Planner: React.FC = () => {
   return (
     <>
       <PlanChat />

@@ -1,3 +1,5 @@
+import { agent_images } from "@/components/agent-circle/data";
+import { EntityData } from "@/components/agent-circle/types";
 import ServerWebsocket from "@/services/ServerWebsocket";
 import { ISocketServerMsg } from "@/types/ServerWebsocket.types";
 import { IBaseAgentEvent } from "@/types/ai/base.types";
@@ -16,7 +18,7 @@ type ITeamData = {
   handoffEvents: IHandoffEvent[];
 };
 
-type IAgentData = {
+export type IAgentData = {
   id: string;
   name: string;
   events: ISocketServerMsg<"AGENT_RUN">[];
@@ -36,7 +38,7 @@ class GroupChat {
   }
 
   public teams: Record<string, ITeamData> = {};
-  public agents: Record<string, IAgentData> = {};
+  private _agentsRecord: Record<string, IAgentData> = {};
   public activeTeamId?: string;
   public activeAgentId?: string;
   private _callbacks: IKickoffTeamConfig["callbacks"] = {};
@@ -50,6 +52,17 @@ class GroupChat {
 
   public setActiveAgentId(agentId: string) {
     this.activeAgentId = agentId;
+  }
+
+  public get agents(): EntityData[] {
+    return Object.values(this._agentsRecord).map((agent, i) => {
+      return {
+        imageSrc: agent_images[i % agent_images.length],
+        role: agent.name,
+        status: "Scheduled",
+        ...agent
+      };
+    });
   }
 
   public kickoffTeam(config: IKickoffTeamConfig) {
@@ -86,12 +99,14 @@ class GroupChat {
     }
 
     for (const agent of event.data.agents) {
-      this.agents[agent.id] = {
-        ...(this.agents[agent.id] ?? {}),
+      this._agentsRecord[agent.id] = {
+        ...(this._agentsRecord[agent.id] ?? {}),
         ...agent,
         events: []
       };
     }
+
+    // this._loadTestData();
   };
 
   private _handleEvent = (event: ISocketServerMsg<"AGENT_RUN">) => {
@@ -115,29 +130,29 @@ class GroupChat {
           team.agentIds = [...team.agentIds, event.data.agent_id];
         }
 
-        if (!this.agents[event.data.agent_id]) {
-          this.agents[event.data.agent_id] = {
+        if (!this._agentsRecord[event.data.agent_id]) {
+          this._agentsRecord[event.data.agent_id] = {
             id: event.data.agent_id,
             name: convertSnakeCaseToTitleCase(event.data.agent_id),
             events: []
           };
         }
 
-        const agent = this.agents[event.data.agent_id];
+        const agent = this._agentsRecord[event.data.agent_id];
         agent.events = [...agent.events, event];
 
         if (event.data.type === "handoff") {
           const handoffEvent = event as IHandoffEvent;
           team.handoffEvents = [...team.handoffEvents, handoffEvent];
           this._callbacks?.onHandoff?.(handoffEvent);
-          this.setActiveAgentId(handoffEvent.data.handoffTo.agent_id!);
           this.setActiveTeamId(handoffEvent.data.handoffTo.team_id!);
+          this.setActiveAgentId(handoffEvent.data.handoffTo.agent_id!);
         }
       }
     }
   };
 
-  // public loadTestData = async (events = testEvents2) => {
+  // private _loadTestData = async (events = testEvents) => {
   //   for (const event of events) {
   //     if (event.data?.type === "stream_event") continue;
   //     await new Promise((resolve) => setTimeout(resolve, 1000));

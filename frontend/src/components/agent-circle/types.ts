@@ -1,6 +1,7 @@
+import { IAgentData } from "@/stores/GroupChat";
 import { ReactNode } from "react";
 
-export interface EntityData {
+export type EntityData = IAgentData & {
   id: string;
   name: string;
   role: string;
@@ -21,7 +22,8 @@ export interface EntityData {
     lastRun: string;
     timeTaken: string;
   };
-}
+  events?: {};
+};
 
 export interface EllipseData {
   src: string;
